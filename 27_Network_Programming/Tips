@@ -1,0 +1,55 @@
+Date: 2.12.2020
+
+0. Network programming with python
+1. socket works on client server architecture model
+2. to get self ip address to setup or initiate server dynamically is as follows
+	
+	import socket
+	HEADER = 64
+	SERVER = socket.gethostbyname(socket.gethostname())
+	PORT = 5050
+	FORMAT = 'utf-8'
+
+3. socket object initiation and server host port binding
+	
+	server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	server.bind((SERVER, PORT))
+
+4. Active threads to count in a python program
+	
+	threadsExcludingCurrentOne = threading.activeCount() -1
+
+5. blocking lines of codes that must run under a thread for not to block other clients
+	
+	SocketConnection, address = server.accept()
+	..
+	Message = SocketConnection.recv(NumberOfBytesToRead).decode(FORMAT)
+
+6. Define a header length for specified protocol on TCP socket to know the message length
+   of the client to receive from . On each connection read the header size data then read message of the given size received from client.
+
+7. Track client disconnection to ensure safe reconnect of the client
+
+8. check received message length every time to over sure that what you are expecting and
+   want to parshe
+
+9. Multi threading . Set the thread Object and daemon=True to release memory after the
+   parent is closed
+
+   		t = threading.Thread(target=example,args=(exampleParams))
+   		t.daemon = True
+   		t.start()
+10.B2BUA = Back to Back User Agent (Simmilar to Man in the middle attack )
+11.Proxy Server , Redirect Server
+12.In SIP , 100 --> Trying, 180 --> Ringing, 200 --> OK, 
+
+Date: 06/12/2020
+
+13. smtp 	--> 25 
+	domain	--> 53
+	ssh  	--> 22
+	mqtt 	--> 1883
+14. XMLRPC ???
+15. 
+
+
