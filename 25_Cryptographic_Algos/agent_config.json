@@ -5,9 +5,9 @@
                               "13.228.42.106"                  : "1883",
                               "3.129.251.210"                  : "1883"},
  "AGENT_ADDRESS"          : "0123",
- "HOST_ADDRESS"           : None,
+ "HOST_ADDRESS"           : "",
  "RSA_KEY_LEN"            : "2048",
- "AGENT_RSA_KEY"          : None,
- "HOST_RSA_KEY"           : None,
- "HAND_SHAKED"            : False, 
+ "AGENT_RSA_KEY"          : "",
+ "HOST_RSA_KEY"           : "",
+ "HAND_SHAKED"            : 0 
 }
