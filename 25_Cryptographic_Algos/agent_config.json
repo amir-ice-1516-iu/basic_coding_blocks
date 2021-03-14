@@ -1,0 +1,13 @@
+{
+ "VERSION"                : "0.0.1",
+ "MQTT_HOST_PORT_LIST"    : { "broker.drinkwellatm.com"        : "1883",
+                              "ctgbroker.drinkwellatm.com"     : "1883",
+                              "13.228.42.106"                  : "1883",
+                              "3.129.251.210"                  : "1883"},
+ "AGENT_ADDRESS"          : "0123",
+ "HOST_ADDRESS"           : None,
+ "RSA_KEY_LEN"            : "2048",
+ "AGENT_RSA_KEY"          : None,
+ "HOST_RSA_KEY"           : None,
+ "HAND_SHAKED"            : False, 
+}
