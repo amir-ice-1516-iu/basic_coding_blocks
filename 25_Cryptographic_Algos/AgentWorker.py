@@ -16,6 +16,10 @@ Created on Sun Mar 14 12:33:53 2021
     getRxBufferSize()
     setRxBufferSize(RxBufferSize)
     
+@Design Rules:
+    1. Class names & Exception names are allways in Camel case starting with upper case letter
+    2. Method names allways in Camel case starting with lower case letter
+    3. Variable names allways in lowercase with underscore seperated if required
 """
 from threading import Thread
 import multiprocessing
@@ -41,9 +45,6 @@ class AgentWorker(object):
     
     def newJob(self, new_job_for_agent):
         self.agent_job_queue.put(new_job_for_agent)
-    
-    def handShakeWith(self,address): #TODO handshake with other Agent
-        pass
     
     def getNextMessage(self):
         pass

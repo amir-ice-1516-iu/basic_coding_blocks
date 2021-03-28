@@ -10,6 +10,10 @@ Created on Sun Mar 14 16:25:58 2021
 @methods:
     handShakeWith(address)
     
+@Design Rules:
+    1. Class names & Exception names are allways in Camel case starting with upper case letter
+    2. Method names allways in Camel case starting with lower case letter
+    3. Variable names allways in lowercase with underscore seperated if required
 """
 import paho.mqtt
 from AgentAccount import AgentAccount
@@ -18,7 +22,7 @@ from AgentJob import AgentJob
 
 class MqttAgent(object):
     
-    def __init__(self, agent_account_config_file_name="agent_config.json"):
+    def __init__(self, agent_account_config_file_name="agent_account_config.json"):
         self.agent_account = None
         self.agent_job = None
         self.agent_worker = None

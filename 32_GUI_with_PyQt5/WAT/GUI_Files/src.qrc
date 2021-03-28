@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/BackGround.jpg</file>
+    <file>icons/Graphical_Visualization_View_logo.png</file>
+    <file>icons/Last_Interview_Report_View_logo.png</file>
+    <file>icons/Current_Interview_Result_Edit.png</file>
+    <file>icons/Interview_Account_Setup.jpg</file>
+    <file>icons/WAT_Dummy_logo.png</file>
+    <file>icons/Exit_logo.png</file>
+    <file>icons/Save_Interview_logo.png</file>
+    <file>icons/Open_Interview_logo.png</file>
+    <file>icons/New_Interview_logo.png</file>
+  </qresource>
+  <qresource prefix="images"/>
+</RCC>

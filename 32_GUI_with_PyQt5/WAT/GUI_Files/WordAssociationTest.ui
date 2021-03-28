@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1035</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Word Association Tester</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <activeon>:/icons/icons/WAT_Dummy_logo.png</activeon>
+   </iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: /icons/icons/BackGround.jpg</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="mainCanvas" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>35</y>
+      <width>1024</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1035</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuInterview">
+    <property name="title">
+     <string>Interview</string>
+    </property>
+    <addaction name="actionNew_Interview"/>
+    <addaction name="actionOpen_Interview_File"/>
+    <addaction name="actionSave_Current_Interview_File"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSetup">
+    <property name="title">
+     <string>Setup Interview</string>
+    </property>
+    <addaction name="actionInterview_Account_Setup"/>
+    <addaction name="actionComplex_Indicators_Setup"/>
+    <addaction name="actionPredefined_Words_Setup"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionCurrent_Interview_Result_Edit"/>
+    <addaction name="actionComplex_Indicators_Edit"/>
+    <addaction name="actionPredefined_Words_Edit"/>
+    <addaction name="actionCurrent_Interview_Details_Edit"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionLast_Interview_Report_View"/>
+    <addaction name="actionGraphical_Visualization_View"/>
+   </widget>
+   <widget class="QMenu" name="menuDashboard">
+    <property name="title">
+     <string>Dashboard</string>
+    </property>
+    <addaction name="actionGenerate_Report"/>
+   </widget>
+   <widget class="QMenu" name="menuSearch">
+    <property name="title">
+     <string>Search Words</string>
+    </property>
+    <addaction name="actionPredefined_Words_Search"/>
+    <addaction name="actionIn_Last_Interview_Search"/>
+    <addaction name="actionIn_Last_Report_Search"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_Help"/>
+   </widget>
+   <addaction name="menuInterview"/>
+   <addaction name="menuSetup"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuDashboard"/>
+   <addaction name="menuSearch"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew_Interview">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/New_Interview_logo.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>New Interview</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpen_Interview_File">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Open_Interview_logo.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Open Interview</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Interview_File">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Save_Interview_logo.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Save Current Interview</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Exit_logo.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionInterview_Account_Setup">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Interview_Account_Setup.jpg</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Interview Account</string>
+   </property>
+  </action>
+  <action name="actionComplex_Indicators_Setup">
+   <property name="text">
+    <string>Complex Indicators</string>
+   </property>
+  </action>
+  <action name="actionPredefined_Words_Setup">
+   <property name="text">
+    <string>Predefined Words</string>
+   </property>
+  </action>
+  <action name="actionCurrent_Interview_Result_Edit">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Current_Interview_Result_Edit.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Current Interview Result</string>
+   </property>
+  </action>
+  <action name="actionComplex_Indicators_Edit">
+   <property name="text">
+    <string>Complex Indicators</string>
+   </property>
+  </action>
+  <action name="actionPredefined_Words_Edit">
+   <property name="text">
+    <string>Predefined Words</string>
+   </property>
+  </action>
+  <action name="actionCurrent_Interview_Details_Edit">
+   <property name="text">
+    <string>Current Interview Details</string>
+   </property>
+  </action>
+  <action name="actionLast_Interview_Report_View">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Last_Interview_Report_View_logo.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Last Interview Report</string>
+   </property>
+  </action>
+  <action name="actionGraphical_Visualization_View">
+   <property name="icon">
+    <iconset>
+     <activeon>:/icons/icons/Graphical_Visualization_View_logo.png</activeon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Graphical Visualization</string>
+   </property>
+  </action>
+  <action name="action_All_In_One_file">
+   <property name="text">
+    <string> All In One file</string>
+   </property>
+  </action>
+  <action name="actionExport_to_pdf">
+   <property name="text">
+    <string>Export to pdf</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Report">
+   <property name="text">
+    <string>Generate Report</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionPredefined_Words_Search">
+   <property name="text">
+    <string>Predefined Words</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionIn_Last_Interview_Search">
+   <property name="text">
+    <string>In Last Interview</string>
+   </property>
+  </action>
+  <action name="actionIn_Last_Report_Search">
+   <property name="text">
+    <string>In Last Report</string>
+   </property>
+  </action>
+  <action name="actionAbout_Help">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
+ <connections/>
+</ui>

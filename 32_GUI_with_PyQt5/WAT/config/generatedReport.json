@@ -1,0 +1,29 @@
+{
+    "STIMULUS_WORDS"            : ["a","b","c"],
+    "REACTION_TIME_5THS"        : [11.1,11.1,11.1],
+    "REACTION_TIME_SEC"         : [2.22,2.22,2.22],
+    "ROUND1"                    :{
+        "REACTION"                  : ["A","B","C"],
+        "REPRODUCTION"              : ["R1","R2","R3"],         
+        "REACTION_NOTE"             : ["CM1","CM2","CM3"],
+        "COMPLEX_INDICATOR_TYPES"   : {
+            "1" : [["C1T1","C1T2"], ["C1T1","C1T2"], ["C1T1","C1T2"]],
+            "2" : [["C2T1","C2T2"], ["C2T1","C2T2"], ["C2T1","C2T2"]],
+            "3" : [["C3T1","C3T2"], ["C3T1","C3T2"], ["C3T1","C3T2"]],
+            "4" : [["C4T1","C4T2"], ["C4T1","C4T2"], ["C4T1","C4T2"]],
+            "5" : [["C5T1","C5T2"], ["C5T1","C5T2"], ["C5T1","C5T2"]]
+            }
+        },
+    "ROUND2"                    :{
+        "REACTION"                  : ["A","B","C"],
+        "REPRODUCTION"              : ["R1","R2","R3"],         
+        "REACTION_NOTE"             : ["CM1","CM2","CM3"],
+        "COMPLEX_INDICATOR_TYPES"   : {
+            "1" : [["C1T1","C1T2"], ["C1T1","C1T2"], ["C1T1","C1T2"]],
+            "2" : [["C2T1","C2T2"], ["C2T1","C2T2"], ["C2T1","C2T2"]],
+            "3" : [["C3T1","C3T2"], ["C3T1","C3T2"], ["C3T1","C3T2"]],
+            "4" : [["C4T1","C4T2"], ["C4T1","C4T2"], ["C4T1","C4T2"]],
+            "5" : [["C5T1","C5T2"], ["C5T1","C5T2"], ["C5T1","C5T2"]]
+            }
+        }
+}

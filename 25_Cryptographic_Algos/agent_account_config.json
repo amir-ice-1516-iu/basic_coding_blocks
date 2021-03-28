@@ -1,0 +1,34 @@
+{
+    "VERSION": "0.1.1",
+    "MQTT_HOST_CREADENTIALS": {
+        "BROKER0": {
+            "HOST": "broker.drinkwellatm.com",
+            "PORT": "1883",
+            "USER": "",
+            "PASS": ""
+        },
+        "BROKER1": {
+            "HOST": "ctgbroker.drinkwellatm.com",
+            "PORT": "1883",
+            "USER": "",
+            "PASS": ""
+        },
+        "BROKER2": {
+            "HOST": "3.129.251.210",
+            "PORT": "1883",
+            "USER": "",
+            "PASS": ""
+        },
+        "BROKER3": {
+            "HOST": "13.228.42.106",
+            "PORT": "1883",
+            "USER": "",
+            "PASS": ""
+        }
+    },
+    "RSA_KEY_SIZE" : "4096",
+    "AGENT_RSA_KEY": "",
+    "HOST_RSA_KEY": "",
+    "CONNECTED_PEER_INFO": "",
+    "HAND_SHAKED" : 0
+}

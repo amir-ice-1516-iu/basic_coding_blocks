@@ -1,0 +1,1 @@
+python3 sshMOSI.py mosquitto_sub broker.drinkwellatm.com 1883 sshMOSI | sudo bash 2>&1 | python3 sshMOSI.py mosquitto_pub broker.drinkwellatm.com 1883 sshMISO

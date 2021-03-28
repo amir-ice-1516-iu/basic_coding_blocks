@@ -1,0 +1,174 @@
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978803, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"848781915","Water_Balance":24.32000000000000024,"Dispensed":0.0,"Balance":14.592000000000000144,"MessageType":1,"Time":1615978803,"StatusCode":1,"Message":"Card Amt.=14.59 tk|Water Bal.=24.32000000000000024 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978806, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"848781915","Water_Balance":24.32000000000000024,"Dispensed":0.0,"Balance":14.592000000000000144,"MessageType":1,"Time":1615978806,"StatusCode":1,"Message":"Card Amt.=14.59 tk|Water Bal.=24.32000000000000024 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978811, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.51, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978819, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"848781915","Water_Balance":22.81000000000000024,"Dispensed":0.0,"Balance":13.686000000000000144,"MessageType":1,"Time":1615978819,"StatusCode":1,"Message":"Card Amt.=13.69 tk|Water Bal.=22.81000000000000024 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978827, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.5, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978835, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"848781915","Water_Balance":21.31000000000000024,"Dispensed":0.0,"Balance":12.786000000000000144,"MessageType":1,"Time":1615978836,"StatusCode":1,"Message":"Card Amt.=12.79 tk|Water Bal.=21.31000000000000024 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 848781915, "Time": 1615978841, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.53, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3524528112, "Time": 1615978920, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3524528112","Water_Balance":193.22666666666668943666666667,"Dispensed":0.0,"Balance":115.936000000000013662,"MessageType":1,"Time":1615978920,"StatusCode":1,"Message":"Card Amt.=115.94 tk|Water Bal.=193.22666666666668943666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3524528112, "Time": 1615978952, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 8.2899999999999988, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3252225364, "Time": 1615979007, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"3252225364","Water_Balance":16.1700000000000024,"Dispensed":0.0,"Balance":9.70200000000000144,"MessageType":1,"Time":1615979008,"StatusCode":1,"Message":"Card Amt.=9.7 tk|Water Bal.=16.1700000000000024 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 305662960, "Time": 1615979016, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV113"}
+{"DeviceID":"DV113","UID":"305662960","Water_Balance":64.703333333333333333333333333,"Dispensed":0.0,"Balance":38.82200000000000000,"MessageType":1,"Time":1615979016,"StatusCode":1,"Message":"Card Amt.=38.82 tk|Water Bal.=64.703333333333333333333333333 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3252225364, "Time": 1615979039, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 5.1399999999999994, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 305662960, "Time": 1615979113, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 10.56, "DeviceID": "DV113"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979693, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"157170526","Water_Balance":282.05333333333330552333333333,"Dispensed":0.0,"Balance":169.231999999999983314,"MessageType":1,"Time":1615979693,"StatusCode":1,"Message":"Card Amt.=169.23 tk|Water Bal.=282.05333333333330552333333333 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979714, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.16, "DeviceID": "DV141"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979740, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"157170526","Water_Balance":281.89333333333330552333333333,"Dispensed":0.0,"Balance":169.135999999999983314,"MessageType":1,"Time":1615979741,"StatusCode":1,"Message":"Card Amt.=169.14 tk|Water Bal.=281.89333333333330552333333333 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979743, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"157170526","Water_Balance":281.89333333333330552333333333,"Dispensed":0.0,"Balance":169.135999999999983314,"MessageType":1,"Time":1615979743,"StatusCode":1,"Message":"Card Amt.=169.14 tk|Water Bal.=281.89333333333330552333333333 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979755, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.88, "DeviceID": "DV141"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979778, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"157170526","Water_Balance":281.01333333333330552333333333,"Dispensed":0.0,"Balance":168.607999999999983314,"MessageType":1,"Time":1615979778,"StatusCode":1,"Message":"Card Amt.=168.61 tk|Water Bal.=281.01333333333330552333333333 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979780, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"157170526","Water_Balance":281.01333333333330552333333333,"Dispensed":0.0,"Balance":168.607999999999983314,"MessageType":1,"Time":1615979781,"StatusCode":1,"Message":"Card Amt.=168.61 tk|Water Bal.=281.01333333333330552333333333 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979914, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 17.510000000000003, "DeviceID": "DV141"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615979932, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"157170526","Water_Balance":263.50333333333330252333333333,"Dispensed":0.0,"Balance":158.101999999999981514,"MessageType":1,"Time":1615979933,"StatusCode":1,"Message":"Card Amt.=158.1 tk|Water Bal.=263.50333333333330252333333333 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1648501595, "Time": 1615979990, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV142"}
+{"DeviceID":"DV142","UID":"1648501595","Water_Balance":112.18666666666666703666666667,"Dispensed":0.0,"Balance":67.312000000000000222,"MessageType":1,"Time":1615979991,"StatusCode":1,"Message":"Card Amt.=67.31 tk|Water Bal.=112.18666666666666703666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 157170526, "Time": 1615980066, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 17.69, "DeviceID": "DV141"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1648501595, "Time": 1615980107, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 11.97, "DeviceID": "DV142"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3924104286, "Time": 1615980158, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"3924104286","Water_Balance":92.25000000000000453,"Dispensed":0.0,"Balance":55.350000000000002718,"MessageType":1,"Time":1615980160,"StatusCode":1,"Message":"Card Amt.=55.35 tk|Water Bal.=92.25000000000000453 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4177896286, "Time": 1615980172, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"4177896286","Water_Balance":161.08333333333334053333333333,"Dispensed":0.0,"Balance":96.65000000000000432,"MessageType":1,"Time":1615980172,"StatusCode":1,"Message":"Card Amt.=96.65 tk|Water Bal.=161.08333333333334053333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4177896286, "Time": 1615980407, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 9.16, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980407, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":70.9300000000000010,"Dispensed":0.0,"Balance":42.55800000000000060,"MessageType":1,"Time":1615980409,"StatusCode":1,"Message":"Card Amt.=42.56 tk|Water Bal.=70.9300000000000010 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 580870235, "Time": 1615980427, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"580870235","Water_Balance":38.163333333333338733333333333,"Dispensed":0.0,"Balance":22.89800000000000324,"MessageType":1,"Time":1615980427,"StatusCode":1,"Message":"Card Amt.=22.9 tk|Water Bal.=38.163333333333338733333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980466, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 17.920000000000003, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980482, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":53.0099999999999980,"Dispensed":0.0,"Balance":31.80599999999999880,"MessageType":1,"Time":1615980482,"StatusCode":1,"Message":"Card Amt.=31.81 tk|Water Bal.=53.0099999999999980 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3924104286, "Time": 1615980489, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 20.62, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 580870235, "Time": 1615980538, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 4.67, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980541, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 20.63, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980583, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":32.3799999999999980,"Dispensed":0.0,"Balance":19.42799999999999880,"MessageType":1,"Time":1615980583,"StatusCode":1,"Message":"Card Amt.=19.43 tk|Water Bal.=32.3799999999999980 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980629, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 5.2699999999999994, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980778, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":27.1099999999999986,"Dispensed":0.0,"Balance":16.26599999999999916,"MessageType":1,"Time":1615980778,"StatusCode":1,"Message":"Card Amt.=16.27 tk|Water Bal.=27.1099999999999986 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980809, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 12.61, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980846, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":14.4999999999999986,"Dispensed":0.0,"Balance":8.69999999999999916,"MessageType":1,"Time":1615980846,"StatusCode":1,"Message":"Card Amt.=8.7 tk|Water Bal.=14.4999999999999986 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980851, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.42, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980860, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":13.0799999999999986,"Dispensed":0.0,"Balance":7.84799999999999916,"MessageType":1,"Time":1615980860,"StatusCode":1,"Message":"Card Amt.=7.85 tk|Water Bal.=13.0799999999999986 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615980863, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.48, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4064928495, "Time": 1615980979, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"4064928495","Water_Balance":54.193333333333336263333333333,"Dispensed":0.0,"Balance":32.516000000000001758,"MessageType":1,"Time":1615980980,"StatusCode":1,"Message":"Card Amt.=32.52 tk|Water Bal.=54.193333333333336263333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4064928495, "Time": 1615980984, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.25, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4064928495, "Time": 1615981013, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"4064928495","Water_Balance":53.943333333333336263333333333,"Dispensed":0.0,"Balance":32.366000000000001758,"MessageType":1,"Time":1615981013,"StatusCode":1,"Message":"Card Amt.=32.37 tk|Water Bal.=53.943333333333336263333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4064928495, "Time": 1615981048, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 3.16, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615981100, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":12.5999999999999986,"Dispensed":0.0,"Balance":7.55999999999999916,"MessageType":1,"Time":1615981100,"StatusCode":1,"Message":"Card Amt.=7.56 tk|Water Bal.=12.5999999999999986 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615981103, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"2848394846","Water_Balance":12.5999999999999986,"Dispensed":0.0,"Balance":7.55999999999999916,"MessageType":1,"Time":1615981103,"StatusCode":1,"Message":"Card Amt.=7.56 tk|Water Bal.=12.5999999999999986 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3380091230, "Time": 1615981112, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3380091230","Water_Balance":72.066666666666663702666666667,"Dispensed":0.0,"Balance":43.2399999999999982216,"MessageType":1,"Time":1615981112,"StatusCode":1,"Message":"Card Amt.=43.24 tk|Water Bal.=72.066666666666663702666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 843442415, "Time": 1615981114, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV113"}
+{"DeviceID":"DV113","UID":"843442415","Water_Balance":175.11666666666666486666666667,"Dispensed":0.0,"Balance":105.06999999999999892,"MessageType":1,"Time":1615981114,"StatusCode":1,"Message":"Card Amt.=105.07 tk|Water Bal.=175.11666666666666486666666667 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2848394846, "Time": 1615981124, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 5.28, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2187243485, "Time": 1615981126, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"2187243485","Water_Balance":141.44666666666666323666666667,"Dispensed":0.0,"Balance":84.867999999999997942,"MessageType":1,"Time":1615981126,"StatusCode":1,"Message":"Card Amt.=84.87 tk|Water Bal.=141.44666666666666323666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 843442415, "Time": 1615981164, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 11.47, "DeviceID": "DV113"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 843442415, "Time": 1615981179, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV113"}
+{"DeviceID":"DV113","UID":"843442415","Water_Balance":163.64666666666666486666666667,"Dispensed":0.0,"Balance":98.18799999999999892,"MessageType":1,"Time":1615981179,"StatusCode":1,"Message":"Card Amt.=98.19 tk|Water Bal.=163.64666666666666486666666667 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2187243485, "Time": 1615981186, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 10.0, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3380091230, "Time": 1615981196, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 15.46, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1227269726, "Time": 1615981219, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"1227269726","Water_Balance":64.576666666666667666666666667,"Dispensed":0.0,"Balance":38.74600000000000060,"MessageType":1,"Time":1615981219,"StatusCode":1,"Message":"Card Amt.=38.75 tk|Water Bal.=64.576666666666667666666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 843442415, "Time": 1615981222, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 11.03, "DeviceID": "DV113"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1227269726, "Time": 1615981325, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 18.95, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1120119886, "Time": 1615981929, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"1120119886","Water_Balance":9.236666666666666666666666667,"Dispensed":0.0,"Balance":5.542,"MessageType":1,"Time":1615981930,"StatusCode":1,"Message":"Card Amt.=5.54 tk|Water Bal.=9.236666666666666666666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1120119886, "Time": 1615982083, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 9.24, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1120119886, "Time": 1615982093, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"1120119886","Water_Balance":0.0,"Dispensed":0.0,"Balance":0.0,"MessageType":1,"Time":1615982093,"StatusCode":2,"Message":"Insufficient balance|Please recharge","Calibration":0.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1120119886, "Time": 1615982128, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"1120119886","Water_Balance":0.0,"Dispensed":0.0,"Balance":0.0,"MessageType":1,"Time":1615982129,"StatusCode":2,"Message":"Insufficient balance|Please recharge","Calibration":0.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 854351711, "Time": 1615982183, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"854351711","Water_Balance":1.260000000000004028,"Dispensed":0.0,"Balance":0.7560000000000024168,"MessageType":1,"Time":1615982184,"StatusCode":1,"Message":"Card Amt.=0.76 tk|Water Bal.=1.260000000000004028 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 574022383, "Time": 1615982210, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV142"}
+{"DeviceID":"DV142","UID":"574022383","Water_Balance":154.49333333333333577333333333,"Dispensed":0.0,"Balance":92.696000000000001464,"MessageType":1,"Time":1615982211,"StatusCode":1,"Message":"Card Amt.=92.7 tk|Water Bal.=154.49333333333333577333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1120119886, "Time": 1615982234, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"1120119886","Water_Balance":83.33,"Dispensed":0.0,"Balance":49.998,"MessageType":1,"Time":1615982235,"StatusCode":1,"Message":"Card Amt.=50 tk|Water Bal.=83.33 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 854351711, "Time": 1615982259, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.27, "DeviceID": "DV141"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1120119886, "Time": 1615982277, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 9.17, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 574022383, "Time": 1615982393, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 11.82, "DeviceID": "DV142"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3915137118, "Time": 1615982716, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"3915137118","Water_Balance":194.21333333333333393333333333,"Dispensed":0.0,"Balance":116.52800000000000036,"MessageType":1,"Time":1615982716,"StatusCode":1,"Message":"Card Amt.=116.53 tk|Water Bal.=194.21333333333333393333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3915137118, "Time": 1615982767, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 5.6, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1928846046, "Time": 1615982772, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV141"}
+{"DeviceID":"DV141","UID":"1928846046","Water_Balance":56.896666666666665156666666667,"Dispensed":0.0,"Balance":34.137999999999999094,"MessageType":1,"Time":1615982772,"StatusCode":1,"Message":"Card Amt.=34.14 tk|Water Bal.=56.896666666666665156666666667 Lt","Calibration":0.89}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 1928846046, "Time": 1615983077, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 8.07, "DeviceID": "DV141"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4074309723, "Time": 1615983133, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"4074309723","Water_Balance":0.0,"Dispensed":0.0,"Balance":0.0,"MessageType":1,"Time":1615983134,"StatusCode":2,"Message":"Insufficient balance|Please recharge","Calibration":0.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4074309723, "Time": 1615983218, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"4074309723","Water_Balance":83.93333333333333433333333333,"Dispensed":0.0,"Balance":50.36000000000000060,"MessageType":1,"Time":1615983218,"StatusCode":1,"Message":"Card Amt.=50.36 tk|Water Bal.=83.93333333333333433333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4074309723, "Time": 1615983308, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 15.53, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 154025054, "Time": 1615983519, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"154025054","Water_Balance":117.63666666666667074666666667,"Dispensed":0.0,"Balance":70.582000000000002448,"MessageType":1,"Time":1615983520,"StatusCode":1,"Message":"Card Amt.=70.58 tk|Water Bal.=117.63666666666667074666666667 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 154025054, "Time": 1615983539, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 2.0099999999999997, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984693, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":172.45333333333332669333333333,"Dispensed":0.0,"Balance":103.471999999999996016,"MessageType":1,"Time":1615984693,"StatusCode":1,"Message":"Card Amt.=103.47 tk|Water Bal.=172.45333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984697, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.22, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 432029278, "Time": 1615984709, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984709, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV147","UID":"432029278","Water_Balance":78.9100000000000032,"Dispensed":0.0,"Balance":47.34600000000000192,"MessageType":1,"Time":1615984709,"StatusCode":1,"Message":"Card Amt.=47.35 tk|Water Bal.=78.9100000000000032 Lt","Calibration":0.9}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":172.23333333333332669333333333,"Dispensed":0.0,"Balance":103.339999999999996016,"MessageType":1,"Time":1615984710,"StatusCode":1,"Message":"Card Amt.=103.34 tk|Water Bal.=172.23333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984715, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":172.23333333333332669333333333,"Dispensed":0.0,"Balance":103.339999999999996016,"MessageType":1,"Time":1615984715,"StatusCode":1,"Message":"Card Amt.=103.34 tk|Water Bal.=172.23333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984718, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.21, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 432029278, "Time": 1615984726, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.86, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984729, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":172.02333333333332669333333333,"Dispensed":0.0,"Balance":103.213999999999996016,"MessageType":1,"Time":1615984729,"StatusCode":1,"Message":"Card Amt.=103.21 tk|Water Bal.=172.02333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984751, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 2.48, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984782, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":169.54333333333332669333333333,"Dispensed":0.0,"Balance":101.725999999999996016,"MessageType":1,"Time":1615984782,"StatusCode":1,"Message":"Card Amt.=101.73 tk|Water Bal.=169.54333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984794, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.37, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984802, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":168.17333333333332669333333333,"Dispensed":0.0,"Balance":100.903999999999996016,"MessageType":1,"Time":1615984803,"StatusCode":1,"Message":"Card Amt.=100.9 tk|Water Bal.=168.17333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984826, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 3.02, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984835, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":165.15333333333332669333333333,"Dispensed":0.0,"Balance":99.091999999999996016,"MessageType":1,"Time":1615984835,"StatusCode":1,"Message":"Card Amt.=99.09 tk|Water Bal.=165.15333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984841, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.59, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984850, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":164.56333333333332669333333333,"Dispensed":0.0,"Balance":98.737999999999996016,"MessageType":1,"Time":1615984850,"StatusCode":1,"Message":"Card Amt.=98.74 tk|Water Bal.=164.56333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984867, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 2.21, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984891, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":162.35333333333332669333333333,"Dispensed":0.0,"Balance":97.411999999999996016,"MessageType":1,"Time":1615984892,"StatusCode":1,"Message":"Card Amt.=97.41 tk|Water Bal.=162.35333333333332669333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984911, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 2.4300000000000003, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984919, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":159.92333333333332639333333333,"Dispensed":0.0,"Balance":95.953999999999995836,"MessageType":1,"Time":1615984919,"StatusCode":1,"Message":"Card Amt.=95.95 tk|Water Bal.=159.92333333333332639333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984926, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.06, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984936, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":159.86333333333332639333333333,"Dispensed":0.0,"Balance":95.917999999999995836,"MessageType":1,"Time":1615984937,"StatusCode":1,"Message":"Card Amt.=95.92 tk|Water Bal.=159.86333333333332639333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984950, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":159.86333333333332639333333333,"Dispensed":0.0,"Balance":95.917999999999995836,"MessageType":1,"Time":1615984950,"StatusCode":1,"Message":"Card Amt.=95.92 tk|Water Bal.=159.86333333333332639333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984951, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.03, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984967, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":159.83333333333332639333333333,"Dispensed":0.0,"Balance":95.899999999999995836,"MessageType":1,"Time":1615984967,"StatusCode":1,"Message":"Card Amt.=95.9 tk|Water Bal.=159.83333333333332639333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984973, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 0.55000000000000012, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984981, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV119"}
+{"DeviceID":"DV119","UID":"3913168734","Water_Balance":159.28333333333332627333333333,"Dispensed":0.0,"Balance":95.569999999999995764,"MessageType":1,"Time":1615984981,"StatusCode":1,"Message":"Card Amt.=95.57 tk|Water Bal.=159.28333333333332627333333333 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 3913168734, "Time": 1615984992, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 1.29, "DeviceID": "DV119"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4192419678, "Time": 1615985002, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV147"}
+{"DeviceID":"DV147","UID":"4192419678","Water_Balance":88.24999999999999837,"Dispensed":0.0,"Balance":52.949999999999999022,"MessageType":1,"Time":1615985003,"StatusCode":1,"Message":"Card Amt.=52.95 tk|Water Bal.=88.24999999999999837 Lt","Calibration":0.9}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 4192419678, "Time": 1615985068, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 11.92, "DeviceID": "DV147"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 699481694, "Time": 1615985244, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV149"}
+{"DeviceID":"DV149","UID":"699481694","Water_Balance":38.97,"Dispensed":0.0,"Balance":23.382,"MessageType":1,"Time":1615985244,"StatusCode":1,"Message":"Card Amt.=23.38 tk|Water Bal.=38.97 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 699481694, "Time": 1615985264, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 2.2200000000000003, "DeviceID": "DV149"}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2303108958, "Time": 1615985318, "MessageType": 1, "Message": 0, "Balance": 0, "Dispensed": 0, "DeviceID": "DV113"}
+{"DeviceID":"DV113","UID":"2303108958","Water_Balance":38.006666666666670096666666667,"Dispensed":0.0,"Balance":22.804000000000002058,"MessageType":1,"Time":1615985319,"StatusCode":1,"Message":"Card Amt.=22.8 tk|Water Bal.=38.006666666666670096666666667 Lt","Calibration":1.0}
+{"StatusCode": 0, "Water_Balance": 0, "UID": 2303108958, "Time": 1615985357, "MessageType": 2, "Message": 0, "Balance": 0, "Dispensed": 4.33, "DeviceID": "DV113"}
