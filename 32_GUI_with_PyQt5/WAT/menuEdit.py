@@ -5,10 +5,16 @@ Created on Sat Mar 27 06:03:56 2021
 
 @author: rango
 """
+import json
 
 class menuEdit_Handler(object):
-    def __init__(self):
+    def __init__(self,ui,configFileLocation="config/"):
         pass
+    
+    def loadConfiguration(self,configFile,Obj):
+        with open(configFile,"r") as fp:
+            Obj = json.load(fp)
+            
     def Current_Interview_Result_Edit_Handler(ui):#TODO
         print("Current Interview Result Edit Callback")
 

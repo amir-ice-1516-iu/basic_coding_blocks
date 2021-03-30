@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>450</height>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Interview</string>
@@ -17,13 +23,13 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>126</y>
+     <y>135</y>
      <width>1024</width>
-     <height>280</height>
+     <height>321</height>
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -144,14 +150,16 @@
          <widget class="QLCDNumber" name="timerLabel">
           <property name="font">
            <font>
-            <pointsize>25</pointsize>
+            <pointsize>30</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
            </font>
           </property>
           <property name="smallDecimalPoint">
            <bool>false</bool>
           </property>
           <property name="value" stdset="0">
-           <double>0.200000000000000</double>
+           <double>0.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -162,7 +170,7 @@
         <item>
          <widget class="QLabel" name="timeTakenLabel">
           <property name="text">
-           <string>Time Taken :</string>
+           <string>Time Taken        :</string>
           </property>
          </widget>
         </item>
@@ -199,13 +207,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>416</y>
+     <y>466</y>
      <width>1021</width>
-     <height>41</height>
+     <height>31</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_5">

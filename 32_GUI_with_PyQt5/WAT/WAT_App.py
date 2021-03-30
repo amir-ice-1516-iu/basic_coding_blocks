@@ -17,6 +17,7 @@ import WordAssociationTest
 #import NewInterview
 import time
 import menuInterview
+import menuEdit
 
 def onCancel(OBJ):
     OBJ.close()
@@ -38,6 +39,7 @@ ui = WordAssociationTest.Ui_MainWindow()
 ui.setupUi(MainWindow)
 
 menu_interview_handler = menuInterview.menuInterview_Handler(ui,"config/interview.json")
+menu_edit_handler = menuEdit.menuEdit_Handler(ui,"config/")
     
 MainWindow.show()
 sys.exit(app.exec_())

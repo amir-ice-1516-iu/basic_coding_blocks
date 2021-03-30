@@ -1,0 +1,30 @@
+{
+    "INTERVIEW_COMPLETED": 0,
+    "NAME_OF_RESPONDER": "Ex Person",
+    "COMPANY_NAME": "Ex Company",
+    "INTERVIEWED_BY": "Ex Interviewer",
+    "NUMBER_OF_WORDS_IN_TEST": 50,
+    "DATE_OF_INTERVIEW": "2021-04-01",
+    "TIME_OF_INTERVIEW": "",
+    "TIME_STAMP": 1617090550.3629246,
+    "ROUND1_RESPONSES": {
+        "COMPLETED": 0,
+        "CURRENT_TEST_SERIAL": 0,
+        "EXAMPLE_WORD": {
+            "SERIAL_NO": 1,
+            "RESPONSE_WORD": "Example_Response",
+            "COMPLEX_INDICATORS": {},
+            "TIME_TAKEN": "0.00"
+        }
+    },
+    "ROUND2_RESPONSES": {
+        "COMPLETED": 0,
+        "CURRENT_TEST_SERIAL": 0,
+        "EXAMPLE_WORD": {
+            "SERIAL_NO": 1,
+            "RESPONSE_WORD": "Example_Response",
+            "COMPLEX_INDICATORS": {},
+            "TIME_TAKEN": "0.00"
+        }
+    }
+}

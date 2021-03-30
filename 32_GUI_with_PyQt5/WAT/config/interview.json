@@ -8,20 +8,27 @@
     "TIME_OF_INTERVIEW"         : "",
     "TIME_STAMP"                : "",
     "ROUND1_RESPONSES"          : {
+        "COMPLETED"          : 0,
+        "CURRENT_TEST_SERIAL": 0,
         "EXAMPLE_WORD" : {
+            "SERIAL_NO" : 1,
             "RESPONSE_WORD": "Example_Response",
             "COMPLEX_INDICATORS": {
                 
                 },
-            "TIME_TAKEN" : "0.2"
+            "TIME_TAKEN" : "0.00"
             }
         },
     "ROUND2_RESPONSES"          :{
+        "COMPLETED"    : 0,
+        "CURRENT_TEST_SERIAL": 0,
         "EXAMPLE_WORD" :{
+            "SERIAL_NO" : 1,
             "RESPONSE_WORD": "Example_Response",
             "COMPLEX_INDICATORS":{
                 
-                }
+                },
+            "TIME_TAKEN" : "0.00"
             }
         }
 }
