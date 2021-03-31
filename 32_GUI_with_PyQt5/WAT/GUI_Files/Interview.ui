@@ -23,9 +23,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>135</y>
+     <y>164</y>
      <width>1024</width>
-     <height>321</height>
+     <height>280</height>
     </rect>
    </property>
   </widget>
@@ -35,7 +35,7 @@
      <x>0</x>
      <y>0</y>
      <width>1021</width>
-     <height>131</height>
+     <height>151</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -82,8 +82,13 @@
        <widget class="QLabel" name="testWordLabel">
         <property name="font">
          <font>
-          <pointsize>25</pointsize>
+          <pointsize>30</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Dummy Word</string>

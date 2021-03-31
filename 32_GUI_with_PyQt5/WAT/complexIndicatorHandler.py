@@ -57,11 +57,18 @@ class ComplexIndicatorHandler(object):
             
     def resetComplexIndicatorInput(self):
         self.CI_FORM.reactiionTimeCategoryLabel.setText(self.config["CATEGORY"]["1"]["NAME"])
+        self.CI_FORM.meaningCategoryLabel.setText(self.config["CATEGORY"]["2"]["NAME"])
+        self.CI_FORM.physicalReactionsCategoryLabel.setText(self.config["CATEGORY"]["3"]["NAME"])
+        self.CI_FORM.speechCategoryLabel.setText(self.config["CATEGORY"]["4"]["NAME"])
+        self.CI_FORM.patternsCategoryLabel.setText(self.config["CATEGORY"]["5"]["NAME"])
+        
+        #self.CI_FORM.category1Type1.setChecked(False)
         IDs = self.config["CATEGORY"].keys()
         for ID in IDs:
             KEYs = self.config["CATEGORY"][ID]["TYPES"]
             for KEY,ind in zip(KEYs,range(1,len(KEYs)+1)):
                 eval("""self.CI_FORM.category"""+ID+"""Type"""+str(ind)+""".setText(self.config["CATEGORY"][ID]["TYPES"][KEY])""")
+                eval("""self.CI_FORM.category"""+ID+"""Type"""+str(ind)+""".setChecked(False)""")
         self._setEditMode()
     
     def showComplexIndicatorInput(self):

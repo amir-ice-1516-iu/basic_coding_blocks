@@ -37,9 +37,10 @@ app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
 ui = WordAssociationTest.Ui_MainWindow()
 ui.setupUi(MainWindow)
+ui.MainWindow = MainWindow
 
-menu_interview_handler = menuInterview.menuInterview_Handler(ui,"config/interview.json")
-menu_edit_handler = menuEdit.menuEdit_Handler(ui,"config/")
+menu_interview_handler = menuInterview.menuInterview_Handler(ui,"interview.json")
+menu_edit_handler = menuEdit.menuEdit_Handler(ui,"")
     
 MainWindow.show()
 sys.exit(app.exec_())
