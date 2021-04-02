@@ -27,10 +27,6 @@ class menuInterview_Handler(object):
         self.FreshConfigFile = copy.copy(self.configFile)
         self.FreshConfigFilePath = copy.copy(self.configFilePath)
         self.loadDefaultInterviewConfig()
-        self.ui.actionNew_Interview.triggered.connect(self.FreshNewInterview)
-        self.ui.actionOpen_Interview_File.triggered.connect(self.Open_Interview_File_Handler)
-        self.ui.actionSave_Current_Interview_File.triggered.connect(self.Save_Current_Interview_File_Handler)
-        self.ui.actionExit.triggered.connect(self.Exit_Handler)
         self.newInterview = InterviewHandler.InterviewHandler(self.ui)
         
         self.newInterview.configFile =self.configFile
@@ -42,11 +38,13 @@ class menuInterview_Handler(object):
         self.newInterview.newInterviewSubmited = False
         self.newInterview.newInterviewFormShowed = False
         self.newInterview.newInterviewCanceled = False
+        self.INTERVIEW_SETUP_MODE = False
         
     def loadDefaultInterviewConfig(self):
         try:
             path = os.path.join(self.configFilePath,self.configFile)
-            print("loading : ",path)
+            if self.ui.DEBUG_MODE:
+                print("loading : ",path)
             with open(path,"r") as fp:
                 self.config = json.load(fp)
         except Exception:
@@ -58,12 +56,13 @@ class menuInterview_Handler(object):
     def saveTempInterviewConfig(self):
         try:
             path = os.path.join("temp_config",os.path.split(self.configFile)[1])
-            print("Saving to : ",path)
+            if self.ui.DEBUG_MODE:
+                print("Saving to : ",path)
             with open(path,"w") as fp:
                 json.dump(self.config,fp,indent=4)
         except Exception as eWrite:
             sys.stderr.write("Unable to write to temp interview config")
-            sys.stderr.write(eWrite)
+            sys.stderr.write(str(eWrite))
             sys.exit(3)
     
     def setDefaultInterviewFields(self):
@@ -86,7 +85,8 @@ class menuInterview_Handler(object):
         self.newInterview.newInterviewFormShowed = False
         self.newInterview.newInterviewCanceled = True
         self.newInterview.newInterviewSubmited = False
-        print("interview Canceled")
+        if self.ui.DEBUG_MODE:
+            print("interview Canceled")
     
     def onSubmitNewInterviewForm(self):
         #self.loadDefaultInterviewConfig()
@@ -103,12 +103,41 @@ class menuInterview_Handler(object):
             self.config["NUMBER_OF_WORDS_IN_TEST"] = 100
         #print(self.config)
         self.saveTempInterviewConfig()
-        print("Responder Name  : ", self.config["NAME_OF_RESPONDER"])
-        print("Company Name    : ", self.config["COMPANY_NAME"])
-        print("Interviewer Name: ", self.config["INTERVIEWED_BY"])
-        print("Date            : ", self.config["DATE_OF_INTERVIEW"])
+        if self.ui.DEBUG_MODE:
+            print("Responder Name  : ", self.config["NAME_OF_RESPONDER"])
+            print("Company Name    : ", self.config["COMPANY_NAME"])
+            print("Interviewer Name: ", self.config["INTERVIEWED_BY"])
+            print("Date            : ", self.config["DATE_OF_INTERVIEW"])
         self.NewInterviewForm.close()
-        self.startInterview()
+        if self.INTERVIEW_SETUP_MODE:
+            try:
+                with open(os.path.join(self.FreshConfigFilePath,self.FreshConfigFile),"w") as fp:
+                    json.dump(self.config, fp, indent=4)
+                    if self.ui.DEBUG_MODE:
+                        print("Interview Account Setup Successful") #TOEDIT notify via GUI
+                        self._showSetupSuccessDialog("Account Setup Success", "Interview Account Setup Successful")
+            except Exception as eSetup:
+                sys.stderr.write("Unable to setup interview")
+                sys.stderr.write(str(eSetup))
+        else:
+            self.startInterview()
+    def _showSetupSuccessDialog(self,title, message):
+       msg = QtWidgets.QMessageBox()
+       msg.setIcon(QtWidgets.QMessageBox.Information)
+    
+       msg.setText(message)
+       #msg.setInformativeText("This is additional information")
+       msg.setWindowTitle(title)
+       #msg.setDetailedText("The details are as follows:")
+       msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+       #msg.buttonClicked.connect(self._msgbtn)
+    	
+       retval = msg.exec_()
+       if self.ui.DEBUG_MODE:
+           print("value of pressed message box button:", retval)
+	
+    def _msgbtn(i):
+       print("Button pressed is:",i)
     
     def startInterview(self): #TODO
         self.newInterview.closeInterview()
@@ -125,13 +154,17 @@ class menuInterview_Handler(object):
         self.New_Interview_Handler()
     
     def New_Interview_Handler(self): #TODO
-        print("New Interview Handler Callback")
-        if self.loadDefaultInterviewConfig():
-            pass
-        else:
-            return 0
-        
-        if not self.newInterview.newInterviewFormShowed and not self.newInterview.newInterviewSubmited:
+        try:
+            self.ui.lastActiveWidget.close()
+        except Exception as eClear:
+            if self.ui.DEBUG_MODE:
+                print("Unable to clear window central widget")
+            sys.stderr.write(str(eClear))
+            sys.exit(10)
+        if self.ui.DEBUG_MODE:
+            print("New Interview Handler Callback")
+        if self.loadDefaultInterviewConfig():        
+            #if not self.newInterview.newInterviewFormShowed and not self.newInterview.newInterviewSubmited:
             self.newInterview = InterviewHandler.InterviewHandler(self.ui)
             
             self.newInterview.configFile =self.configFile
@@ -139,6 +172,7 @@ class menuInterview_Handler(object):
             self.newInterview.generateInterviewForm()
             
             self.NewInterviewForm = QtWidgets.QWidget(self.ui.centralwidget)
+            self.ui.lastActiveWidget = self.NewInterviewForm
             self.NI_FORM = NewInterview.Ui_Form()
             self.NI_FORM.setupUi(self.NewInterviewForm)
             self.ui.mainCanvas = self.NewInterviewForm
@@ -151,11 +185,15 @@ class menuInterview_Handler(object):
             self.NewInterviewForm.show()
             return 1
         else:
-            print("Form already showed")
             return 0
+        #else:
+        #    if self.ui.DEBUG_MODE:
+        #        print("Form already showed")
+        #    return 0
     
     def Open_Interview_File_Handler(self): #TODO
-        print("Open Interview File Callback")
+        if self.ui.DEBUG_MODE:
+            print("Open Interview File Callback")
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
         fileName, d = QtWidgets.QFileDialog.getOpenFileNames(self.ui.centralwidget,"QFileDialog.getSaveFileName()","","WAT Interview (*.json);;All Files (*)", options=options)
@@ -163,32 +201,51 @@ class menuInterview_Handler(object):
         if len(fileName):
             #self.newInterview.closeInterview()
             path, filename = os.path.split(fileName[0])
-            print("Path: ",path)
-            print("File: ",filename)
-            #self.newInterview.closeInterview()
             self.configFilePath = path
             self.configFile = filename
             try:
                 self.NewInterviewForm.close()
                 self.newInterview.closeInterview()
             except Exception:
-                print("No interview obj yet")
+                if self.ui.DEBUG_MODE:
+                    print("No interview obj yet")
             if self.New_Interview_Handler():    
                 #self.newInterview.setInterveiwConfiguration(self.config)
+                self.configFile = copy.copy(self.FreshConfigFile)
                 self.NI_FORM.submitDetails.click()
             else: #TODO
-                print("Invalid interview file to open")
+                if self.ui.DEBUG_MODE:
+                    print("Invalid interview file to open")
         
     def Save_Current_Interview_File_Handler(self):
-        print("Save Current Interview File Callback")
+        if self.ui.DEBUG_MODE:
+            print("Save Current Interview File Callback")
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
         fileName, d = QtWidgets.QFileDialog.getSaveFileName(self.ui.centralwidget,"QFileDialog.getSaveFileName()","","WAT Interview (*.json);;All Files (*)", options=options)
         #file_name = QtWidgets.QFileDialog.getSaveFileName(self.ui.centralwidget, 'Save File')
-        print(type(fileName))
-        print(type(d))
-    
+        if self.ui.DEBUG_MODE:
+            print(fileName)
+        try:
+            if fileName!="":
+                if fileName[-4:]=="json":
+                    with open(fileName, "w") as fp:
+                        json.dump(self.config,fp,indent=4)
+                        if self.ui.DEBUG_MODE:
+                            print("File : ",fileName)
+                            print("Saved")
+                else:
+                    if self.ui.DEBUG_MODE:
+                        print("Invalid File name of format")
+            else: #TODO
+                if self.ui.DEBUG_MODE:
+                    print("Unable to save file")
+        except Exception as eSave:
+            sys.stderr.write("Unable to save")
+            sys.stderr.write(str(eSave))
+            
     def Exit_Handler(self):
-        print("Exit Callback")
+        if self.ui.DEBUG_MODE:
+            print("Exit Callback")
         self.ui.MainWindow.close()
 

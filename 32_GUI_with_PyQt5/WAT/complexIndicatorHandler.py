@@ -26,6 +26,7 @@ import ComplexIndicator
 class ComplexIndicatorHandler(object):
     
     def __init__(self, ui, configFile="config/complexIndicators.json"):
+        
         self.ui = ui
         self.configFile = configFile
         self.inTestSession = True
@@ -44,7 +45,7 @@ class ComplexIndicatorHandler(object):
         self.CI_FORM = ComplexIndicator.Ui_Form()
         self.CI_FORM.setupUi(self.ComplexIndicatorViewForm)
         
-        self.ui.complexIndicatorsSelection = self.ComplexIndicatorViewForm
+        self.ui.complexIndicatorsSelection = self.ComplexIndicatorViewForm #TRACE BUG HERE IF REQUIRED IN FUTURE
     
     def loadComplexIndicatorConfiguration(self):
         try:
@@ -80,18 +81,27 @@ class ComplexIndicatorHandler(object):
         self.ui.complexIndicatorsSelection.hide()
     
     def _setEditMode(self):
+        self.CI_FORM.updateExistingComplexIndicator.setEnabled(not self.inTestSession)
+        self.CI_FORM.complexIndicatorToUpdate.setEnabled(not self.inTestSession)
+        self.CI_FORM.selectedTypeLabel.setEnabled(not self.inTestSession)
+        self.CI_FORM.addNewComplexIndicator.setEnabled(not self.inTestSession)
+        self.CI_FORM.newComplexIndicatorToAdd.setEnabled(not self.inTestSession)
+        self.CI_FORM.selectedComplexIndicatorCategory.setEnabled(not self.inTestSession)
+        self.CI_FORM.doneSetupButton.setEnabled(not self.inTestSession)
+        
         self.CI_FORM.updateExistingComplexIndicator.setVisible(not self.inTestSession)
         self.CI_FORM.complexIndicatorToUpdate.setVisible(not self.inTestSession)
         self.CI_FORM.selectedTypeLabel.setVisible(not self.inTestSession)
         self.CI_FORM.addNewComplexIndicator.setVisible(not self.inTestSession)
         self.CI_FORM.newComplexIndicatorToAdd.setVisible(not self.inTestSession)
         self.CI_FORM.selectedComplexIndicatorCategory.setVisible(not self.inTestSession)
-    
+        self.CI_FORM.doneSetupButton.setVisible(not self.inTestSession)
+        
     def viewComplexIndiciatorHandler(self):
         self._setEditMode()
         self.ComplexIndicatorViewForm.show()
          
-    def editComplexIndicatorHandler(self, canvas):
+    def editComplexIndicatorHandler(self):
         self.inTestSession = False
         self._setEditMode()
         
