@@ -13,6 +13,7 @@ import os
 import sys
 from PyQt5 import QtWidgets #,QtCore, QtGui
 import copy
+from matplotlib import pyplot as plt
 
 from ListToIMAGE import ListToIMAGE
 
@@ -230,11 +231,54 @@ class menuDashboard_Handler(object): #TODO
                             tempRow.append(self.reportConfig["SCORES"][col][row])
                     L.append(tempRow)
                     L.append(Pad)
+                if self.ui.DEBUG_MODE:
+                    print("Build End")
                 Obj.setFontSize(50)
                 #for i in range(len(Obj.FONTS)):
                 #    Obj.FONT_INDEX = i
                 #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
                 Obj.generateImage(L)
+                if self.ui.DEBUG_MODE:
+                    print("Saving End")
+                
+                
+                Height_ROUND1 = self.reportConfig["ROUND1"]["REACTION_TIME"]
+                Height_ROUND2 = self.reportConfig["ROUND2"]["REACTION_TIME"]
+                Domain_S_WORDS = self.reportConfig["SCORES"]["S_WORDS"]
+                Domain_RESPONSE = self.reportConfig["ROUND1"]["REACTION"]
+                Domain_REPRODUCTION = self.reportConfig["ROUND2"]["REACTION"]
+                Domain_X1 = []
+                Domain_X2 = []
+                Colors1 = ["green"]*len(Height_ROUND1)
+                Colors2 = ["green"]*len(Height_ROUND2)
+                
+                for i in range(len(Domain_S_WORDS)):
+                    Domain_X1.append(Domain_S_WORDS[i]+"\n"+Domain_RESPONSE[i])
+                    if Height_ROUND1[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
+                        Colors1[i] = "red"
+                for i in range(len(Domain_S_WORDS)):
+                    Domain_X2.append(Domain_S_WORDS[i]+"\nRP:"+Domain_REPRODUCTION[i])
+                    if Height_ROUND2[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:                
+                        Colors2[i] = "red"
+                
+                y = [self.reportConfig["ROUND1"]["MEDIAN_PRT"]]*len(Domain_S_WORDS)
+                plt.bar(Domain_RESPONSE, Height_ROUND1, color=Colors1)
+                plt.plot(range(len(Domain_S_WORDS)),y)
+                plt.xticks(rotation=90)
+                plt.yticks(rotation=90)
+                plt.savefig(ABS_Path[:-4]+"Graph_Round1"+ABS_Path[-4:])
+                
+                #plt.clear()
+                if self.ui.DEBUG_MODE:
+                    print("Plot1 End")
+                
+                plt.bar(Domain_REPRODUCTION, Height_ROUND2, color=Colors2)
+                plt.plot(range(len(Domain_S_WORDS)),y)
+                plt.xticks(rotation=90)
+                plt.yticks(rotation=90)
+                plt.savefig(ABS_Path[:-4]+"Graph_Round2"+ABS_Path[-4:])
+                if self.ui.DEBUG_MODE:
+                    print("Plot2 End")
                 
                 self._showMessageDialog(" Exported Successfuly","Exported to png successffully")
         except Exception as eExportPng:
