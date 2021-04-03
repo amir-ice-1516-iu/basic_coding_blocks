@@ -9,6 +9,7 @@ Created on Sun Mar 28 12:36:19 2021
 @purpose: to convert 2D list into Image as Report
 """
 from PIL import Image, ImageDraw, ImageFont
+import os
 
 
 class ListToIMAGE(object):
@@ -27,11 +28,15 @@ class ListToIMAGE(object):
         self.selectedPage = 0
         self.columLabels = []
         self.alignment = "LEFT"
-        self.PosYDefaultValue = 100
+        self.PosYDefaultValue = 200
         self.PosX = 5
         self.PosY = self.PosYDefaultValue
         self.writingColumLables = False
         self.IMAGE = []
+        self.FONTS = ["FreeMono.ttf","Arialn.ttf","arial.ttf","ArialNarrow2.ttf","ArialNarrowBold.ttf","ArialNarrowBoldItalic.ttf",
+                      "ArialNarrowFett.ttf","ArialNarrowFettKursiv.ttf","ArialNarrowFettKursiv2.ttf","ArialNarrowItalic.ttf",
+                      "Arialnb.ttf","Arnar.ttf","Arnari.ttf"]
+        self.FONT_INDEX = 0
         
         
     def generateImage(self,listData):
@@ -72,7 +77,7 @@ class ListToIMAGE(object):
         for newPage in range(self.numberOfPages):
             self.IMAGE.append(Image.new("RGB", (self.pageWidth,self.pageHeight), self.bgColor))
             self._IMD.append(ImageDraw.Draw(self.IMAGE[-1]))
-        self.FONT = ImageFont.truetype("Pillo/Tests/fonts/FreeMono.ttf",self.fontSize)
+        self.FONT = ImageFont.truetype(os.path.join("fonts",self.FONTS[self.FONT_INDEX]), self.fontSize)
     
     def _setMaxValues(self,listData):
         if type(listData)!=type(list()):
@@ -144,7 +149,7 @@ class ListToIMAGE(object):
                     break
                 
     def _doPadding(self,word):
-        if len(str(word))<self.maxCollumLength:
+        if len(str(word))<=self.maxCollumLength:
             Remaining = self.maxCollumLength-len(str(word))
             Spaces = " "*(Remaining//2)
             

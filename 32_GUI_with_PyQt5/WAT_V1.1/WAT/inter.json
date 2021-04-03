@@ -6,13 +6,13 @@
     "NUMBER_OF_WORDS_IN_TEST": 20,
     "DATE_OF_INTERVIEW": "2021-04-01",
     "TIME_OF_INTERVIEW": "",
-    "TIME_STAMP": 1617350591.591659,
+    "TIME_STAMP": 1617442166.8789105,
     "INTERVIEW_WORDS_JSON_FILE": "wordsList.json",
     "INTERVIEW_WORDS_JSON_FILE_LOCATION": "config",
     "CURRENT_ROUND": 1,
     "ROUND1_RESPONSES": {
         "COMPLETED": 0,
-        "CURRENT_TEST_SERIAL": 9,
+        "CURRENT_TEST_SERIAL": 11,
         "EXAMPLE_WORD": {
             "SERIAL_NO": 1,
             "RESPONSE_WORD": "Example_Response",
@@ -114,6 +114,37 @@
                 "Patterns": []
             },
             "TIME_TAKEN": 0.6
+        },
+        "Habit": {
+            "SERIAL_NO": 9,
+            "RESPONSE_WORD": "good",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS",
+                    "MR"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "MW"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 2.0
+        },
+        "New": {
+            "SERIAL_NO": 10,
+            "RESPONSE_WORD": "day",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.0
         }
     },
     "ROUND2_RESPONSES": {

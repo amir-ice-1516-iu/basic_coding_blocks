@@ -62,7 +62,8 @@ class menuEdit_Handler(object):
         try:
             if self.ui.DEBUG_MODE:
                 print("Saving Predefined Words to : ",self.wordsFile)
-            with open(self.wordsFile, "w") as fp:
+            ABS_PATH = os.path.join(self.wordsFileLocation,self.wordsFile)
+            with open(ABS_PATH, "w") as fp:
                 json.dump(self.interview_words, fp, indent=4)
             return 1
         except Exception as eWordSave:

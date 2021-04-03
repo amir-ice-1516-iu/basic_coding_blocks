@@ -11,7 +11,6 @@ Created on Sat Mar 27 02:31:48 2021
 """
 
 import sys
-import os
 #import src_rc
 from PyQt5 import QtWidgets #,QtCore, QtGui
 import WordAssociationTest
@@ -26,8 +25,7 @@ import menuSearch
 import menuHelp
 
 if __name__=='__main__':
-    os.system("bash generatePyFiles.sh")
-    
+   
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = WordAssociationTest.Ui_MainWindow()

@@ -176,42 +176,72 @@ class menuDashboard_Handler(object): #TODO
         return 1      
     
     def _takeFileName(self):#TODO
-        pass
+        options = QtWidgets.QFileDialog.Options()
+        options |= QtWidgets.QFileDialog.DontUseNativeDialog
+        fileName, d = QtWidgets.QFileDialog.getSaveFileName(self.ui.centralwidget,"QFileDialog.getSaveFileName()","","WAT Interview (*.png);;All Files (*)", options=options)
+        #file_name = QtWidgets.QFileDialog.getSaveFileName(self.ui.centralwidget, 'Save File')
+        if len(fileName):
+            #self.newInterview.closeInterview()
+            path, filename = os.path.split(fileName)
+            if filename:
+                self.imageFileToSave = filename
+                self.imageFileLocation = path
+                return 1
+            else:
+                return 0
+        else:
+            return 0
     
     def Export_Report_To_Png_Handler(self):
         if self.ui.DEBUG_MODE:
             print(" Export Generated Report To png Handler callback")
-        self._takeFileName()
-        self.loadInterviewReport()
-        if self.reportConfig["IS_READY_TO_GENERATE_GRAPH"]:
-            Obj = ListToIMAGE()
-            ABS_Path = os.path.join(self.imageFileLocation,self.imageFileToSave)
-            Obj.setImageFileName(ABS_Path)
-            L = []
-            Cols = list(self.reportConfig["SCORES"].keys())
-            Pad = []
-            for i in range(65,79):
-                #Col.append(str(chr(i))*9)
-                Pad.append("_"*9)
-            Obj.setColumLabels([Pad,Cols,Pad])
-            #Obj.setAlignment("LEFT")
-            Obj.setAlignment("CENTER")
-            #Obj.setAlignment("RIGHT")
-            
-            for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
-                tempRow = []
-                for col in Cols:
-                    if col=="R_WORDS":
-                        tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
-                    elif col=="R_P_WORDS":
-                        tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
-                    else:
-                        tempRow.append(self.reportConfig["SCORES"][col][row])
-                L.append(tempRow)
-                L.append(Pad)
-            Obj.setFontSize(25)
-            Obj.generateImage(L)
-            self._showMessageDialog(" Exported Successfuly","Exported to png successffully")
+        if self._takeFileName():
+            pass
+        else:
+            if self.ui.DEBUG_MODE:
+                print("Invalid File or canceled")
+            return
+        
+        #self.loadInterviewReport()
+        try:
+            if self.reportConfig["IS_READY_TO_GENERATE_GRAPH"]:
+                Obj = ListToIMAGE()
+                ABS_Path = os.path.join(self.imageFileLocation,self.imageFileToSave)
+                Obj.setImageFileName(ABS_Path)
+                L = []
+                Cols = list(self.reportConfig["SCORES"].keys())
+                Pad = []
+                for i in range(65,79):
+                    #Col.append(str(chr(i))*9)
+                    Pad.append("_"*9)
+                Obj.setColumLabels([Pad,Cols,Pad])
+                #Obj.setAlignment("LEFT")
+                Obj.setAlignment("CENTER")
+                #Obj.setAlignment("RIGHT")
+                
+                for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                    tempRow = []
+                    for col in Cols:
+                        if col=="R_WORDS":
+                            tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
+                        elif col=="R_P_WORDS":
+                            tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
+                        else:
+                            tempRow.append(self.reportConfig["SCORES"][col][row])
+                    L.append(tempRow)
+                    L.append(Pad)
+                Obj.setFontSize(50)
+                #for i in range(len(Obj.FONTS)):
+                #    Obj.FONT_INDEX = i
+                #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
+                Obj.generateImage(L)
+                
+                self._showMessageDialog(" Exported Successfuly","Exported to png successffully")
+        except Exception as eExportPng:
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Unable to Export")
+                sys.stderr.write(str(eExportPng))
+            self._showMessageDialog(" Denied ", "Failed to Export")
     
     def _calculateMedian(self,values):
         SortedValues = sorted(values)
@@ -241,8 +271,9 @@ class menuDashboard_Handler(object): #TODO
                 self.reportConfig = json.load(fp)
             return 1
         except Exception as eOpen:
-            sys.stderr.write(self.tempConfigFile+" No such config file or directory")
-            sys.stderr.write(str(eOpen))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write(self.tempConfigFile+" No such config file or directory")
+                sys.stderr.write(str(eOpen))
             #sys.exit(8)
             return 0
         
@@ -258,8 +289,9 @@ class menuDashboard_Handler(object): #TODO
                 #self.wordsFileLocation = self.config["INTERVIEW_WORDS_JSON_FILE_LOCATION"]
             return 1
         except Exception as eWordLoad:
-            sys.stderr.write("Unable to load ",self.wordsFile," file" )
-            sys.stderr.write(str(eWordLoad))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Unable to load ",self.wordsFile," file" )
+                sys.stderr.write(str(eWordLoad))
             #sys.exit(5)
             return 0
     
@@ -283,8 +315,9 @@ class menuDashboard_Handler(object): #TODO
                 json.dump(self.reportConfig,fp,indent=4)
             return 1
         except Exception as eOpen:
-            sys.stderr.write(self.tempConfigFile+" Unable to Save Generated Report")
-            sys.stderr.write(str(eOpen))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write(self.tempConfigFile+" Unable to Save Generated Report")
+                sys.stderr.write(str(eOpen))
             #sys.exit(8)
             return 0
     

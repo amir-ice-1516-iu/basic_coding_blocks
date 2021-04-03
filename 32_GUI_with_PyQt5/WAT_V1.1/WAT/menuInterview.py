@@ -48,7 +48,8 @@ class menuInterview_Handler(object):
             with open(path,"r") as fp:
                 self.config = json.load(fp)
         except Exception:
-            sys.stderr("No such configuration fie \""+self.configFile+"\"")
+            if self.ui.DEBUG_MODE:
+                sys.stderr("No such configuration fie \""+self.configFile+"\"")
             #sys.exit(1)
             return 0
         return 1
@@ -61,8 +62,9 @@ class menuInterview_Handler(object):
             with open(path,"w") as fp:
                 json.dump(self.config,fp,indent=4)
         except Exception as eWrite:
-            sys.stderr.write("Unable to write to temp interview config")
-            sys.stderr.write(str(eWrite))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Unable to write to temp interview config")
+                sys.stderr.write(str(eWrite))
             sys.exit(3)
     
     def loadTempInterviewConfig(self):
@@ -73,7 +75,8 @@ class menuInterview_Handler(object):
             with open(path,"r") as fp:
                 self.config = json.load(fp)
         except Exception:
-            sys.stderr("No such configuration fie \""+self.configFile+"\"")
+            if self.ui.DEBUG_MODE:
+                sys.stderr("No such configuration fie \""+self.configFile+"\"")
             #sys.exit(1)
             return 0
         return 1
@@ -130,8 +133,9 @@ class menuInterview_Handler(object):
                         print("Interview Account Setup Successful") #TOEDIT notify via GUI
                         self._showSetupSuccessDialog("Account Setup Success", "Interview Account Setup Successful")
             except Exception as eSetup:
-                sys.stderr.write("Unable to setup interview")
-                sys.stderr.write(str(eSetup))
+                if self.ui.DEBUG_MODE:
+                    sys.stderr.write("Unable to setup interview")
+                    sys.stderr.write(str(eSetup))
         else:
             self.startInterview()
     def _showSetupSuccessDialog(self,title, message):
@@ -172,7 +176,7 @@ class menuInterview_Handler(object):
         except Exception as eClear:
             if self.ui.DEBUG_MODE:
                 print("Unable to clear window central widget")
-            sys.stderr.write(str(eClear))
+                sys.stderr.write(str(eClear))
             sys.exit(12)
         self.loadTempInterviewConfig()
         self.startInterview()
@@ -183,7 +187,7 @@ class menuInterview_Handler(object):
         except Exception as eClear:
             if self.ui.DEBUG_MODE:
                 print("Unable to clear window central widget")
-            sys.stderr.write(str(eClear))
+                sys.stderr.write(str(eClear))
             sys.exit(10)
         if self.ui.DEBUG_MODE:
             print("New Interview Handler Callback")
@@ -266,8 +270,9 @@ class menuInterview_Handler(object):
                 if self.ui.DEBUG_MODE:
                     print("Unable to save file")
         except Exception as eSave:
-            sys.stderr.write("Unable to save")
-            sys.stderr.write(str(eSave))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Unable to save")
+                sys.stderr.write(str(eSave))
     
     def Open_Generated_Report_Handler(self): #TODO
         if self.ui.DEBUG_MODE:

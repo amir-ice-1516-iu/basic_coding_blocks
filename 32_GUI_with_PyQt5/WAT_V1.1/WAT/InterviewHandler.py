@@ -63,8 +63,9 @@ class InterviewHandler(object):
             with open(ABS_PATH,"r") as fp:
                 self.interview_words = json.load(fp)
         except Exception as eWordLoad:
-            sys.stderr.write("Unable to load "+self.wordsFile+" file" )
-            sys.stderr.write(str(eWordLoad))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Unable to load "+self.wordsFile+" file" )
+                sys.stderr.write(str(eWordLoad))
             sys.exit(5)
     
     def loadInterviewConfiguration(self):
@@ -77,8 +78,9 @@ class InterviewHandler(object):
                 self.wordsFile = self.config["INTERVIEW_WORDS_JSON_FILE"]
                 self.wordsFileLocation = self.config["INTERVIEW_WORDS_JSON_FILE_LOCATION"]
         except Exception as eOpen:
-            sys.stderr.write(self.configFile+" No such config file or directory \n")
-            sys.stderr.write(str(eOpen))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write(self.configFile+" No such config file or directory \n")
+                sys.stderr.write(str(eOpen))
             sys.exit(2)
     
     #@staticmethod
@@ -97,8 +99,9 @@ class InterviewHandler(object):
             with open(path,"w") as fp:
                 json.dump(self.config,fp,indent=4)
         except Exception as eSave:
-            sys.stderr.write("Unable to write temp interveiw config file ")
-            sys.stderr.write(str(eSave))
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Unable to write temp interveiw config file ")
+                sys.stderr.write(str(eSave))
             sys.exit(4)
     
     def closeInterview(self): #TODO
@@ -133,7 +136,8 @@ class InterviewHandler(object):
         elif self.config["CURRENT_ROUND"] ==2:
             self.I_FORM.testRoundLabel.setText("Second Pass")
         else:
-            sys.stderr.write("Invalid round")
+            if self.ui.DEBUG_MODE:
+                sys.stderr.write("Invalid round")
             sys.exit(6)
         if self._currentWordSerial > self.config["NUMBER_OF_WORDS_IN_TEST"]:
             return 0
@@ -217,7 +221,8 @@ class InterviewHandler(object):
                     print("Interview completed waiting for report to generate")
                 #return
             else:
-                sys.stderr.write("Something wrong happed invalid current round")
+                if self.ui.DEBUG_MODE:
+                    sys.stderr.write("Something wrong happed invalid current round")
                 sys.exit(7)
         else:
             self.processAssociatedComplexIndicators()
