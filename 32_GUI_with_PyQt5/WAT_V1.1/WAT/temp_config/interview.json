@@ -1,0 +1,621 @@
+{
+    "INTERVIEW_COMPLETED": 1,
+    "NAME_OF_RESPONDER": "amir rango",
+    "COMPANY_NAME": "NybSys Private Limited",
+    "INTERVIEWED_BY": "rango",
+    "NUMBER_OF_WORDS_IN_TEST": 20,
+    "DATE_OF_INTERVIEW": "2021-04-01",
+    "TIME_OF_INTERVIEW": "",
+    "TIME_STAMP": 1617435665.3051684,
+    "INTERVIEW_WORDS_JSON_FILE": "wordsList.json",
+    "INTERVIEW_WORDS_JSON_FILE_LOCATION": "config",
+    "CURRENT_ROUND": 2,
+    "ROUND1_RESPONSES": {
+        "COMPLETED": 1,
+        "CURRENT_TEST_SERIAL": 20,
+        "MEDIAN_PRT": 0,
+        "EXAMPLE_WORD": {
+            "SERIAL_NO": 1,
+            "RESPONSE_WORD": "Example_Response",
+            "COMPLEX_INDICATORS": {},
+            "TIME_TAKEN": "0.00"
+        },
+        "Mouth": {
+            "SERIAL_NO": 1,
+            "RESPONSE_WORD": "asdfasdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "ST"
+                ],
+                "Patterns": [
+                    "P"
+                ]
+            },
+            "TIME_TAKEN": 0.6
+        },
+        "Free": {
+            "SERIAL_NO": 2,
+            "RESPONSE_WORD": "asdfasdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MR"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "SMP"
+                ],
+                "Patterns": [
+                    "S"
+                ]
+            },
+            "TIME_TAKEN": 0.2
+        },
+        "Car": {
+            "SERIAL_NO": 3,
+            "RESPONSE_WORD": "asdfasdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [
+                    "PRT"
+                ],
+                "Meaning": [
+                    "MR"
+                ],
+                "Physical Reactions": [],
+                "Speech": [
+                    "SMP"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Make": {
+            "SERIAL_NO": 4,
+            "RESPONSE_WORD": "asdfgdah",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [
+                    "F"
+                ],
+                "Meaning": [],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Friendly": {
+            "SERIAL_NO": 5,
+            "RESPONSE_WORD": "dfhsdfgh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [
+                    "F"
+                ],
+                "Meaning": [
+                    "MS"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "ST"
+                ],
+                "Patterns": [
+                    "P",
+                    "S"
+                ]
+            },
+            "TIME_TAKEN": 0.6
+        },
+        "Stupid": {
+            "SERIAL_NO": 6,
+            "RESPONSE_WORD": "asdfasdfg",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS",
+                    "RWC"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "ST"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.2
+        },
+        "Together": {
+            "SERIAL_NO": 7,
+            "RESPONSE_WORD": "",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Go": {
+            "SERIAL_NO": 8,
+            "RESPONSE_WORD": "asdfghsdfgh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Habit": {
+            "SERIAL_NO": 9,
+            "RESPONSE_WORD": "asdfgdgh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "New": {
+            "SERIAL_NO": 10,
+            "RESPONSE_WORD": "sdfhsdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Tree": {
+            "SERIAL_NO": 11,
+            "RESPONSE_WORD": "",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "RSW"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.2
+        },
+        "Kiss": {
+            "SERIAL_NO": 12,
+            "RESPONSE_WORD": "sgfhdfsgh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Finger": {
+            "SERIAL_NO": 13,
+            "RESPONSE_WORD": "sdfh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [
+                    "PRT"
+                ],
+                "Meaning": [
+                    "RSW"
+                ],
+                "Physical Reactions": [],
+                "Speech": [
+                    "ST"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.2
+        },
+        "Sad": {
+            "SERIAL_NO": 14,
+            "RESPONSE_WORD": "sdfghsdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.6
+        },
+        "Knife": {
+            "SERIAL_NO": 15,
+            "RESPONSE_WORD": "",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "FLR"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.8
+        },
+        "Dance": {
+            "SERIAL_NO": 16,
+            "RESPONSE_WORD": "adsfgh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS"
+                ],
+                "Physical Reactions": [],
+                "Speech": [
+                    "MW"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.4
+        },
+        "Choice": {
+            "SERIAL_NO": 17,
+            "RESPONSE_WORD": "asdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": [
+                    "P"
+                ]
+            },
+            "TIME_TAKEN": 1.8
+        },
+        "Naked": {
+            "SERIAL_NO": 18,
+            "RESPONSE_WORD": "asdfasdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Plain": {
+            "SERIAL_NO": 19,
+            "RESPONSE_WORD": "asdfg",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.0
+        },
+        "Learn": {
+            "SERIAL_NO": 20,
+            "RESPONSE_WORD": "asdfg",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.4
+        }
+    },
+    "ROUND2_RESPONSES": {
+        "COMPLETED": 1,
+        "CURRENT_TEST_SERIAL": 21,
+        "MEDIAN_PRT": 0,
+        "EXAMPLE_WORD": {
+            "SERIAL_NO": 1,
+            "RESPONSE_WORD": "Example_Response",
+            "COMPLEX_INDICATORS": {},
+            "TIME_TAKEN": "0.00"
+        },
+        "Mouth": {
+            "SERIAL_NO": 1,
+            "RESPONSE_WORD": "asdfasd",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "RSW"
+                ],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.6
+        },
+        "Free": {
+            "SERIAL_NO": 2,
+            "RESPONSE_WORD": "",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [
+                    "MW"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.6
+        },
+        "Car": {
+            "SERIAL_NO": 3,
+            "RESPONSE_WORD": "asdfasd",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.4
+        },
+        "Make": {
+            "SERIAL_NO": 4,
+            "RESPONSE_WORD": "asdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [
+                    "PRT"
+                ],
+                "Meaning": [
+                    "MR"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [],
+                "Patterns": [
+                    "P"
+                ]
+            },
+            "TIME_TAKEN": 1.0
+        },
+        "Friendly": {
+            "SERIAL_NO": 5,
+            "RESPONSE_WORD": "asdfasd",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "SO"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.8
+        },
+        "Stupid": {
+            "SERIAL_NO": 6,
+            "RESPONSE_WORD": "asdfgfasd",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 2.6
+        },
+        "Together": {
+            "SERIAL_NO": 7,
+            "RESPONSE_WORD": "asdfas",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MR"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "SO"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.8
+        },
+        "Go": {
+            "SERIAL_NO": 8,
+            "RESPONSE_WORD": "",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MR"
+                ],
+                "Physical Reactions": [
+                    "GBM"
+                ],
+                "Speech": [
+                    "SMP"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 2.2
+        },
+        "Habit": {
+            "SERIAL_NO": 9,
+            "RESPONSE_WORD": "asdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "MS"
+                ],
+                "Physical Reactions": [
+                    "PE"
+                ],
+                "Speech": [
+                    "ST"
+                ],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.2
+        },
+        "New": {
+            "SERIAL_NO": 10,
+            "RESPONSE_WORD": "",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.8
+        },
+        "Tree": {
+            "SERIAL_NO": 11,
+            "RESPONSE_WORD": "asdga",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [
+                    "RSW"
+                ],
+                "Physical Reactions": [
+                    "GBM"
+                ],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Kiss": {
+            "SERIAL_NO": 12,
+            "RESPONSE_WORD": "asdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.6
+        },
+        "Finger": {
+            "SERIAL_NO": 13,
+            "RESPONSE_WORD": "asdfa",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 0.4
+        },
+        "Sad": {
+            "SERIAL_NO": 14,
+            "RESPONSE_WORD": "asdfasd",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.0
+        },
+        "Knife": {
+            "SERIAL_NO": 15,
+            "RESPONSE_WORD": "asdfasdf",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.2
+        },
+        "Dance": {
+            "SERIAL_NO": 16,
+            "RESPONSE_WORD": "asdfghdsh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.4
+        },
+        "Choice": {
+            "SERIAL_NO": 17,
+            "RESPONSE_WORD": "asdfhdefh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.6
+        },
+        "Naked": {
+            "SERIAL_NO": 18,
+            "RESPONSE_WORD": "adfhyed",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.0
+        },
+        "Plain": {
+            "SERIAL_NO": 19,
+            "RESPONSE_WORD": "dertyh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.2
+        },
+        "Learn": {
+            "SERIAL_NO": 20,
+            "RESPONSE_WORD": "dsfgh",
+            "COMPLEX_INDICATORS": {
+                "Reaction Time": [],
+                "Meaning": [],
+                "Physical Reactions": [],
+                "Speech": [],
+                "Patterns": []
+            },
+            "TIME_TAKEN": 1.2
+        }
+    }
+}

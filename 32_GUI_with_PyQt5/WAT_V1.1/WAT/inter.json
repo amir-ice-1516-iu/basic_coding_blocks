@@ -6,12 +6,13 @@
     "NUMBER_OF_WORDS_IN_TEST": 20,
     "DATE_OF_INTERVIEW": "2021-04-01",
     "TIME_OF_INTERVIEW": "",
-    "TIME_STAMP": 1617348078.0902812,
-    "INTERVIEW_WORDS_JSON_FILE": "config/wordsList.json",
+    "TIME_STAMP": 1617350591.591659,
+    "INTERVIEW_WORDS_JSON_FILE": "wordsList.json",
+    "INTERVIEW_WORDS_JSON_FILE_LOCATION": "config",
     "CURRENT_ROUND": 1,
     "ROUND1_RESPONSES": {
         "COMPLETED": 0,
-        "CURRENT_TEST_SERIAL": 10,
+        "CURRENT_TEST_SERIAL": 9,
         "EXAMPLE_WORD": {
             "SERIAL_NO": 1,
             "RESPONSE_WORD": "Example_Response",
@@ -44,7 +45,7 @@
         },
         "Free": {
             "SERIAL_NO": 3,
-            "RESPONSE_WORD": "asdfasdf",
+            "RESPONSE_WORD": "",
             "COMPLEX_INDICATORS": {
                 "Reaction Time": [],
                 "Meaning": [],
@@ -80,7 +81,7 @@
         },
         "Friendly": {
             "SERIAL_NO": 6,
-            "RESPONSE_WORD": "asdfasdfasdf",
+            "RESPONSE_WORD": "",
             "COMPLEX_INDICATORS": {
                 "Reaction Time": [],
                 "Meaning": [],
@@ -88,7 +89,7 @@
                 "Speech": [],
                 "Patterns": []
             },
-            "TIME_TAKEN": 0.6
+            "TIME_TAKEN": 0.0
         },
         "Stupid": {
             "SERIAL_NO": 7,
@@ -104,7 +105,7 @@
         },
         "Together": {
             "SERIAL_NO": 8,
-            "RESPONSE_WORD": "",
+            "RESPONSE_WORD": "123456",
             "COMPLEX_INDICATORS": {
                 "Reaction Time": [],
                 "Meaning": [],
@@ -112,19 +113,7 @@
                 "Speech": [],
                 "Patterns": []
             },
-            "TIME_TAKEN": 0.0
-        },
-        "Go": {
-            "SERIAL_NO": 9,
-            "RESPONSE_WORD": "asdfasdf",
-            "COMPLEX_INDICATORS": {
-                "Reaction Time": [],
-                "Meaning": [],
-                "Physical Reactions": [],
-                "Speech": [],
-                "Patterns": []
-            },
-            "TIME_TAKEN": 0.4
+            "TIME_TAKEN": 0.6
         }
     },
     "ROUND2_RESPONSES": {

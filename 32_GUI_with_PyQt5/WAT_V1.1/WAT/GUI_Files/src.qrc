@@ -1,0 +1,24 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/Menu_Dashboard_logo.png</file>
+    <file>icons/Menu_Edit_logo.png</file>
+    <file>icons/Menu_Help_logo.png</file>
+    <file>icons/Menu_Interview_logo.png</file>
+    <file>icons/Menu_Search_logo.png</file>
+    <file>icons/Menu_Setup_logo.png</file>
+    <file>icons/Menu_View_logo.png</file>
+    <file>icons/Export_Generated_Report_To_PDF_logo.jpg</file>
+    <file>icons/Resume_Interview_logo.png</file>
+    <file>icons/BackGround.jpg</file>
+    <file>icons/Graphical_Visualization_View_logo.png</file>
+    <file>icons/Last_Interview_Report_View_logo.png</file>
+    <file>icons/Current_Interview_Result_Edit.png</file>
+    <file>icons/Interview_Account_Setup.jpg</file>
+    <file>icons/WAT_Dummy_logo.png</file>
+    <file>icons/Exit_logo.png</file>
+    <file>icons/Save_Interview_logo.png</file>
+    <file>icons/Open_Interview_logo.png</file>
+    <file>icons/New_Interview_logo.png</file>
+  </qresource>
+  <qresource prefix="images"/>
+</RCC>

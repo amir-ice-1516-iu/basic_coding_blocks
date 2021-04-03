@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PredefinedWords</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>1</y>
+     <width>1021</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="wordToSearch"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="searchPredefinedWord">
+          <property name="text">
+           <string>Search Word</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="wordsTable">
+      <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="cornerButtonEnabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>240</number>
+      </attribute>
+      <row>
+       <property name="text">
+        <string>1X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2x</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>4X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>5X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>6X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>7X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>8X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>9X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>10X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>11X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>12X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>13X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>14X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>15X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>16X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>17X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>18X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>19X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>20X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>21X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>22X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>23X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>24X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>25X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>26X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>27X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>28X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>29X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>30X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>31X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>32X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>33X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>34X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>35X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>36X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>37X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>38X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>39X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>40X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>41X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>42X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>43X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>44X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>45X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>46X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>47X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>48X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>49X</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>50X</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>|                    1st Quatar                   |</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>|                    2nd Quatar                  |</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>|                    3rd Quatar                   |</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>|                    4th Quatar                   |</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QCheckBox" name="removeWord">
+          <property name="text">
+           <string>Remove Word</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="updatedWordToCommit"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="addWord">
+          <property name="text">
+           <string>Add Word</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="wordToUpdate">
+          <property name="text">
+           <string>Update Word</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
