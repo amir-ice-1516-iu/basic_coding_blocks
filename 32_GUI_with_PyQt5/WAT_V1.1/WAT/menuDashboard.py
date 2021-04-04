@@ -262,20 +262,33 @@ class menuDashboard_Handler(object): #TODO
                         Colors2[i] = "red"
                 
                 y = [self.reportConfig["ROUND1"]["MEDIAN_PRT"]]*len(Domain_S_WORDS)
-                plt.bar(Domain_RESPONSE, Height_ROUND1, color=Colors1)
-                plt.plot(range(len(Domain_S_WORDS)),y)
+                fig, ax1 = plt.subplots()
+                ax1.bar(Domain_S_WORDS, Height_ROUND1, color=Colors1)
+                plt.xticks(rotation=90)
+                plt.yticks(rotation=90)               
+                ax2 = ax1.twiny()
+                ax2.bar(Domain_RESPONSE, Height_ROUND1, color=Colors1)
                 plt.xticks(rotation=90)
                 plt.yticks(rotation=90)
+                ax1.plot(range(len(Domain_S_WORDS)),y)
+                ax2.plot(range(len(Domain_S_WORDS)),y)
+                ax1.set_ylabel("Time in Seconds")
                 plt.savefig(ABS_Path[:-4]+"Graph_Round1"+ABS_Path[-4:])
                 
                 #plt.clear()
                 if self.ui.DEBUG_MODE:
                     print("Plot1 End")
-                
-                plt.bar(Domain_REPRODUCTION, Height_ROUND2, color=Colors2)
-                plt.plot(range(len(Domain_S_WORDS)),y)
+                fig, Ax1 = plt.subplots()
+                Ax1.bar(Domain_S_WORDS, Height_ROUND2, color=Colors2)
                 plt.xticks(rotation=90)
                 plt.yticks(rotation=90)
+                Ax2 = Ax1.twiny()
+                Ax2.bar(Domain_REPRODUCTION,Height_ROUND2, color=Colors2)
+                plt.xticks(rotation=90)
+                plt.yticks(rotation=90)
+                Ax1.plot(range(len(Domain_S_WORDS)),y)
+                Ax2.plot(range(len(Domain_S_WORDS)),y)
+                Ax1.set_ylabel("Time in Seconds")
                 plt.savefig(ABS_Path[:-4]+"Graph_Round2"+ABS_Path[-4:])
                 if self.ui.DEBUG_MODE:
                     print("Plot2 End")
