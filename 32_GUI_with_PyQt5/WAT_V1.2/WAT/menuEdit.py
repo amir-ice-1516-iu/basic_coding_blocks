@@ -97,7 +97,7 @@ class menuEdit_Handler(object):
             sys.exit(11)
         
         self.ReportGeneratorObj = menuDashboard.menuDashboard_Handler(self.ui)
-        if self.ReportGeneratorObj.Generate_Report_Handler():
+        if self.ReportGeneratorObj.reportConfig["IS_READY_TO_GENERATE_GRAPH"]:
             pass
         else:
             return 0

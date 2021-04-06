@@ -61,7 +61,7 @@ class menuDashboard_Handler(object): #TODO
         else:
             self._showMessageDialog("Failed", "Unable to load config file: "+self.interviewConfigFile)
             return 0
-        if self.loadInterviewReport(ref=False): #previous was True
+        if self.loadInterviewReport(ref=True): #previous was True
             pass
         else:
             self._showMessageDialog("Failed", "Unable to load report file: "+self.tempConfigFile)
@@ -172,8 +172,14 @@ class menuDashboard_Handler(object): #TODO
             
             #Column 11 CI_Scores in total
             self.reportConfig["SCORES"]["CI_S"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["F"] = [" "]*tempTotalWords
-            self.reportConfig["SCORES"]["E"] = [" "]*tempTotalWords
+            LF = len(self.reportConfig["SCORES"]["F"])
+            if LF < self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]:
+                for i in range(LF,self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                    self.reportConfig["SCORES"]["F"].append(" ")
+            LE = len(self.reportConfig["SCORES"]["E"])
+            if LE < self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]:
+                for i in range(LE, self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                    self.reportConfig["SCORES"]["E"].append(" ")
             for row in range(tempTotalWords):
                 CI_SCORE = 0
                 CI_SCORE += int(self.reportConfig["SCORES"]["OVER_PM"][row])
@@ -332,8 +338,12 @@ class menuDashboard_Handler(object): #TODO
         try:
             if ref:
                 ABS_PATH = os.path.join(self.refInterviewConfigFilePath,self.refInterviewConfigFile)
+                if self.ui.DEBUG_MODE:
+                    print("Loading ref report")
             else:
                 ABS_PATH = os.path.join(self.tempConfigFilePath,self.tempConfigFile)
+                if self.ui.DEBUG_MODE:
+                    print("Loading temp report")
             if self.ui.DEBUG_MODE:
                 print("Loading D8: ",ABS_PATH)
             with open(ABS_PATH, "r") as fp:
