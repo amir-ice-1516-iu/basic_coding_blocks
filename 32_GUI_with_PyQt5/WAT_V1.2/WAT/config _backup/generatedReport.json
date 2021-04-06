@@ -1,0 +1,50 @@
+{
+    "NAME_OF_RESPONDER"         : "",
+    "COMPANY_NAME"              : " ",
+    "INTERVIEWED_BY"            : " ",
+    "NUMBER_OF_WORDS_IN_TEST"   : 0,
+    "DATE_OF_INTERVIEW"         : "",
+    "IS_READY_TO_GENERATE_GRAPH": 0,
+    "ROUND1"                    :{
+        "REACTION"                  : [],
+        "REACTION_TIME"             : [],         
+        "REACTION_NOTE"             : [],
+        "MEDIAN_PRT"                : 0,
+        "COMPLEX_INDICATOR_TYPES"   : {
+            "1" : [[]],
+            "2" : [[]],
+            "3" : [[]],
+            "4" : [[]],
+            "5" : [[]]
+            }
+        },
+    "ROUND2"                     :{
+        "REACTION"                  : [],
+        "REACTION_TIME"             : [],         
+        "REACTION_NOTE"             : [],
+        "MEDIAN_PRT"                : 0,
+        "COMPLEX_INDICATOR_TYPES"   : {
+            "1" : [[]],
+            "2" : [[]],
+            "3" : [[]],
+            "4" : [[]],
+            "5" : [[]]
+            }
+        },
+    "SCORES"                     :{
+        "SL"                : [],
+        "S_WORDS"           : [],
+        "R_T_5TH"           : [],
+        "R_T_SEC"           : [],
+        "R_WORDS"           : [],
+        "R_P_WORDS"         : [],
+        "BODY_REAC"         : [],
+        "OVER_PM"           : [],
+        "RE"                : [],
+        "LANGUAGE"          : [],
+        "OTHER"             : [],
+        "CI_S"              : [],
+        "F"                 : [],
+        "E"                 : []
+    }
+}

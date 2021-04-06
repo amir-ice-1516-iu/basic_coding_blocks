@@ -1,0 +1,49 @@
+{
+    "AUTHOR" : "Khandakar Amir Hossain",
+    "CONTACT": "amirkhondokar@gmail.com",
+    "PURPOSE": "Complex indicator configurataion for Word Association Test Software",
+    "CATEGORY": {
+        "1": {
+            "NAME": "Reaction Time",
+            "TYPES": {
+                "PRT": "Prolonged reaction times",
+                "F": "Failures"
+            }
+        },
+        "2": {
+            "NAME": "Meaning",
+            "TYPES": {
+                "MLR": "Meaningless reactions",
+                "MS": "Mishearing or not understandable",
+                "RSW": "Repetition of stimulus word",
+                "MR": "Mediate Reactions",
+                "RWC": "Rhymes of word completing",
+                "FR": "False reproduction"
+            }
+        },
+        "3": {
+            "NAME": "Physical Reactions",
+            "TYPES": {
+                "GBM": "Gestures, Bodily Movements",
+                "PE": "Physical Excitation"
+            }
+        },
+        "4": {
+            "NAME": "Speech",
+            "TYPES": {
+                "FLR": "Foreign Language Reactions",
+                "MW": "Multiple Word Response",
+                "ST": "Slips of the tongue",
+                "SMP": "Stuttering, Mispronunciations",
+                "SO": "Sounds, Interjections"
+            }
+        },
+        "5": {
+            "NAME": "Patterns",
+            "TYPES": {
+                "P": "Perseveration",
+                "S": "Stereotypes"
+            }
+        }
+    }
+}
