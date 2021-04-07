@@ -220,7 +220,7 @@ class menuDashboard_Handler(object): #TODO
                 print("Invalid File or canceled")
             return
         
-        #self.loadInterviewReport()
+        self.loadInterviewReport()
         try:
             if self.reportConfig["IS_READY_TO_GENERATE_GRAPH"]:
                 Obj = ListToIMAGE()
