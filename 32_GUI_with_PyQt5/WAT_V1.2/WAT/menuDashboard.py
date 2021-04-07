@@ -137,7 +137,7 @@ class menuDashboard_Handler(object): #TODO
                 logic5 = self.reportConfig["ROUND1"]["REACTION"][row] == self.reportConfig["ROUND2"]["REACTION"][row]
                 CIT1 = self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["3"] 
                 logic6 = "GBM" in CIT1 or "PE" in CIT1 
-                logic7 = self.reportConfig["ROUND2"]["REACTION_TIME"][row] > self.reportConfig["ROUND1"]["MEDIAN_PRT"] or self.reportConfig["ROUND2"]["REACTION_TIME"][row] > self.reportConfig["ROUND2"]["MEDIAN_PRT"] 
+                logic7 = self.reportConfig["ROUND2"]["REACTION_TIME"][row] > self.reportConfig["ROUND1"]["MEDIAN_PRT"] #or self.reportConfig["ROUND2"]["REACTION_TIME"][row] > self.reportConfig["ROUND2"]["MEDIAN_PRT"] 
                 logic8 = logic5 #Logic not given to me
                 R1C4 = self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["4"]
                 logic9 = "FLR" in R1C4 or "MW" in R1C4 or "ST" in R1C4 or "SMP" in R1C4 or "SO" in R1C4
@@ -256,7 +256,80 @@ class menuDashboard_Handler(object): #TODO
                 #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
                 Obj.generateImage(L)
                 if self.ui.DEBUG_MODE:
-                    print("Saving End")
+                    print("Saving End1")
+                
+                Obj = ListToIMAGE()
+                Obj.setImageFileName(ABS_Path[:-4]+str("R2")+ABS_Path[-4:])
+                L = []
+                Cols = list(self.reportConfig["SCORES"].keys())
+                Pad = []
+                for i in range(65,79):
+                    #Col.append(str(chr(i))*9)
+                    Pad.append("_"*9)
+                Obj.setColumLabels([Pad,Cols,Pad])
+                #Obj.setAlignment("LEFT")
+                Obj.setAlignment("CENTER")
+                #Obj.setAlignment("RIGHT")
+                L.append(["","","","Words","With","2","or","more","points","","",""])
+                L.append(Pad)
+                for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                    tempRow = []
+                    if int(self.reportConfig["SCORES"]["CI_S"][row]) >= 2:
+                        for col in Cols:
+                            if col=="R_WORDS":
+                                tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
+                            elif col=="R_P_WORDS":
+                                tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
+                            else:
+                                tempRow.append(self.reportConfig["SCORES"][col][row])
+                        L.append(tempRow)
+                        L.append(Pad)
+                        
+                if self.ui.DEBUG_MODE:
+                    print("Build End2")
+                Obj.setFontSize(50)
+                #for i in range(len(Obj.FONTS)):
+                #    Obj.FONT_INDEX = i
+                #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
+                Obj.generateImage(L)
+                
+                
+                Obj = ListToIMAGE()
+                Obj.setImageFileName(ABS_Path[:-4]+str("Stereos")+ABS_Path[-4:])
+                L = []
+                Cols = list(self.reportConfig["SCORES"].keys())
+                Pad = []
+                for i in range(65,79):
+                    #Col.append(str(chr(i))*9)
+                    Pad.append("_"*9)
+                Obj.setColumLabels([Pad,Cols,Pad])
+                #Obj.setAlignment("LEFT")
+                Obj.setAlignment("CENTER")
+                #Obj.setAlignment("RIGHT")
+                L.append(["","","","Words","With","stereo","types","in","any","round","","",""])
+                L.append(Pad)
+                for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                    tempRow = []
+                    l1 = "S" in self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["5"][row]
+                    l2 = "S" in self.reportConfig["ROUND2"]["COMPLEX_INDICATOR_TYPES"]["5"][row]
+                    if l1 or l2:
+                        for col in Cols:
+                            if col=="R_WORDS":
+                                tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
+                            elif col=="R_P_WORDS":
+                                tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
+                            else:
+                                tempRow.append(self.reportConfig["SCORES"][col][row])
+                        L.append(tempRow)
+                        L.append(Pad)
+                        
+                if self.ui.DEBUG_MODE:
+                    print("Build End3")
+                Obj.setFontSize(50)
+                #for i in range(len(Obj.FONTS)):
+                #    Obj.FONT_INDEX = i
+                #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
+                Obj.generateImage(L)
                 
                 
                 Height_ROUND1 = self.reportConfig["ROUND1"]["REACTION_TIME"]
@@ -316,7 +389,7 @@ class menuDashboard_Handler(object): #TODO
                 #sys.stderr.write("Unable to Export")
                 #sys.stderr.write(str(eExportPng))
                 assert("unable to Export " + str(eExportPng))
-            self._showMessageDialog(" Denied ", "Failed to Export")
+            self._showMessageDialog(" Denied ", "Failed to Export"+str(eExportPng))
     
     def _calculateMedian(self,values):
         SortedValues = sorted(values)

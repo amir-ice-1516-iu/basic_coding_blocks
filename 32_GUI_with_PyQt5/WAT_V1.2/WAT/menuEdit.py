@@ -27,8 +27,7 @@ class menuEdit_Handler(object):
         self.tempConfigFilePath = "temp_config"
         self.ReportGeneratorObj = None
         #self.loadInterviewConfiguration()
-        
-        
+            
     def loadInterviewConfiguration(self):
         try:
             path = os.path.join(self.tempConfigFilePath,self.tempConfigFile)
@@ -405,6 +404,11 @@ class menuEdit_Handler(object):
             MAX_ROWS_TO_GET = int(self.ReportGeneratorObj.reportConfig["NUMBER_OF_WORDS_IN_TEST"])
             for row in range(MAX_ROWS_TO_GET):
                     self.ReportGeneratorObj.reportConfig["SCORES"]["S_WORDS"][row]=self.GR_FORM.generatedReport.item(row,0).text()
+                    try:
+                        self.config["ROUND1_RESPONSES"][self.GR_FORM.generatedReport.item(row,0).text()]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(row,3).text()
+                        self.config["ROUND2_RESPONSES"][self.GR_FORM.generatedReport.item(row,0).text()]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(row,4).text()
+                    except Exception as eEdit:
+                        assert("Unable to update edited to temp_config/interview.json"+str(eEdit))
                     self.ReportGeneratorObj.reportConfig["SCORES"]["R_T_5TH"][row]=self.GR_FORM.generatedReport.item(row,1).text()
                     self.ReportGeneratorObj.reportConfig["SCORES"]["R_T_SEC"][row]=self.GR_FORM.generatedReport.item(row,2).text()
                     self.ReportGeneratorObj.reportConfig["ROUND1"]["REACTION"][row]=self.GR_FORM.generatedReport.item(row,3).text()

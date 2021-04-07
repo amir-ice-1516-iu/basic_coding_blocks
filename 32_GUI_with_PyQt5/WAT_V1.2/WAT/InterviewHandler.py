@@ -38,6 +38,7 @@ class InterviewHandler(object):
         self.newInterviewFormShowed = False
         self.newInterviewCanceled = False
         self.alive = True
+        self.resumed = False
         
         self.generateInterviewForm()
         
@@ -54,6 +55,11 @@ class InterviewHandler(object):
         self.I_FORM.setupUi(self.InterviewForm)
         self.ui.mainCanvas = self.InterviewForm
         self.ui.lastActiveWidget = self.InterviewForm
+        
+        self.I_FORM.timeTakenLabel.setText("")
+        self.I_FORM.responseWrodLabel.setText("")
+        self.I_FORM.lastResponseWord.setText("")
+        self.I_FORM.testRoundLabel.setText("")
     
     def loadInterviewWords(self):
         try:
@@ -121,24 +127,38 @@ class InterviewHandler(object):
         #self.CI.showComplexIndicatorInput()
         self._interviewMessage = "WAT Interview With "+self.config["NAME_OF_RESPONDER"]+ " of "+self.config["COMPANY_NAME"]+ " on "+self.config["DATE_OF_INTERVIEW"]
         self.I_FORM.interviewDetailsLabel.setText(self._interviewMessage)
+        self.I_FORM.interviewOperationalButton.setText("Start Timer")
         if self.showNextWord():
             pass
         else:
             #TODO add message pop up
             self.closeInterview()
-        self.I_FORM.interviewOperationalButton.setText("Start Timer")
         self.InterviewForm.show()
     
     def showNextWord(self):
-        
-        if self.config["CURRENT_ROUND"] ==1:
-            self.I_FORM.testRoundLabel.setText("First Pass")
-        elif self.config["CURRENT_ROUND"] ==2:
-            self.I_FORM.testRoundLabel.setText("Second Pass")
+        if self.resumed:
+            self.I_FORM.wordSerialNumberLabel.setText("")
+            self.I_FORM.testWordLabel.setText("")
+            if self.config["ROUND1_RESPONSES"]["COMPLETED"]:
+                self.I_FORM.interviewOperationalButton.setText("Start/Resume 2nd Round")
+            else:
+                self.I_FORM.interviewOperationalButton.setText("Start/Resume 1st Round")
+            self.CI_FORM.hideComplexIndicatorInput()
+            self.I_FORM.timerLabel.hide()#setText("")
+            self.I_FORM.timeTakenLabel.setText("")
+            self.I_FORM.responseWrodLabel.setText("")
+            self.I_FORM.lastResponseWord.setText("")
+            self.interviewOperationStateValue = 2
+            return 1
         else:
-            if self.ui.DEBUG_MODE:
-                sys.stderr.write("Invalid round")
-            sys.exit(6)
+            if self.config["CURRENT_ROUND"] ==1:
+                self.I_FORM.testRoundLabel.setText("First Pass")
+            elif self.config["CURRENT_ROUND"] ==2:
+                self.I_FORM.testRoundLabel.setText("Second Pass")
+            else:
+                if self.ui.DEBUG_MODE:
+                    sys.stderr.write("Invalid round")
+                sys.exit(6)
         if self._currentWordSerial > self.config["NUMBER_OF_WORDS_IN_TEST"]:
             return 0
         self._wordSerailMessage = "Word "+str(self._currentWordSerial)
@@ -157,9 +177,9 @@ class InterviewHandler(object):
             self.timerStarted = True
             self.timerStartTime = time.time()
             Thread(target=self.showTimerLCD,args=()).start()
-            #elif self.config["CURRENT_ROUND"]==2:
-            #    if self.ui.DEBUG_MODE:
-            #        print("ROUND 2 Started")
+            
+            #self.I_FORM.timerLabel.show()
+            
             self.I_FORM.timeTakenLabel.hide()
             self.I_FORM.responseWrodLabel.hide()
             self.I_FORM.lastResponseWord.hide()
@@ -177,6 +197,16 @@ class InterviewHandler(object):
             self.I_FORM.lastResponseWord.show()
             
         elif self.interviewOperationStateValue==0:
+            if self.resumed:
+                self.resumed = False
+                if self.showNextWord():
+                    pass
+                else:
+                    #TODO add popup message
+                    self.closeInterview()
+                self.I_FORM.interviewOperationalButton.setText("Start Timer")
+                return
+            
             self.saveInterviewConfiguration()
             self.I_FORM.interviewOperationalButton.setText("Start Timer")
             self.processResponse()
@@ -209,8 +239,19 @@ class InterviewHandler(object):
                 self.processAssociatedComplexIndicators()
                 self.config["CURRENT_ROUND"]=2
                 self._currentWordSerial = 1
+                self.resumed = True
                 if self.ui.DEBUG_MODE:
                     print("First pass completed")
+                self._showSetupSuccessDialog("Round Complete","Round 1 Completed \n Please take rest and we will start \n for next round with new words")
+                self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["CURRENT_TEST_SERIAL"] = self._currentWordSerial
+                if self.ui.DEBUG_MODE:
+                    print("CTS: "+str(self._currentWordSerial))
+                    print("CR: "+str(self.config["CURRENT_ROUND"]))
+                    print("CR1:"+str(self.config["ROUND1_RESPONSES"]["COMPLETED"]))
+                    print("CR2:"+str(self.config["ROUND2_RESPONSES"]["COMPLETED"]))
+                self.saveInterviewConfiguration()
+                self.CI_FORM.resetComplexIndicatorInput()
+                return
             elif self.config["CURRENT_ROUND"]==2:
                 self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["COMPLETED"] = 1
                 self.processAssociatedComplexIndicators()
@@ -259,6 +300,7 @@ class InterviewHandler(object):
         pass
     
     def showTimerLCD(self):
+        self.I_FORM.timerLabel.show()
         self.I_FORM.timerLabel.display(str(0.00))
         while(self.timerStarted and self.alive):
             self.timerValue = time.time()-self.timerStartTime
@@ -266,6 +308,19 @@ class InterviewHandler(object):
             self.timerValue = int(self.timerValue)/100.00
             time.sleep(0.2)
             self.I_FORM.timerLabel.display(str(self.timerValue))
+
+    def _showSetupSuccessDialog(self,title, message):
+       msg = QtWidgets.QMessageBox()
+       msg.setIcon(QtWidgets.QMessageBox.Information)
+    
+       msg.setText(message)
+       #msg.setInformativeText("This is additional information")
+       msg.setWindowTitle(title)
+       #msg.setDetailedText("The details are as follows:")
+       msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+       #msg.buttonClicked.connect(self._msgbtn)
+    	
+       retval = msg.exec_()
     
 if __name__=='__main__':
     pass

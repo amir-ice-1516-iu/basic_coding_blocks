@@ -138,6 +138,7 @@ class menuInterview_Handler(object):
                     sys.stderr.write(str(eSetup))
         else:
             self.startInterview()
+            
     def _showSetupSuccessDialog(self,title, message):
        msg = QtWidgets.QMessageBox()
        msg.setIcon(QtWidgets.QMessageBox.Information)
@@ -156,13 +157,15 @@ class menuInterview_Handler(object):
     #def _msgbtn(i):
     #   print("Button pressed is:",i)
     
-    def startInterview(self):
+    def startInterview(self,resume=False):
         self.newInterview.closeInterview()
         self.newInterview = InterviewHandler.InterviewHandler(self.ui)
         self.newInterview.setInterveiwConfiguration(self.config)
         self.newInterview.newInterviewSubmited = True
         self.newInterview.newInterviewFormShowed = False
         self.newInterview.newInterviewCanceled = False
+        if resume:
+            self.newInterview.resumed = True
         self.newInterview.showInterviewPanel()
     
     def FreshNewInterview(self):
@@ -179,7 +182,7 @@ class menuInterview_Handler(object):
                 sys.stderr.write(str(eClear))
             sys.exit(12)
         self.loadTempInterviewConfig()
-        self.startInterview()
+        self.startInterview(resume=True)
     
     def New_Interview_Handler(self):
         try:
