@@ -4,5 +4,6 @@ matplotlib
 nltk
 salsa20==0.3.0
 rsa==4.7.2
-mysql
+#mysql
 Pillow==7.0.0
+PyQt5
