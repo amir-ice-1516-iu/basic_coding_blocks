@@ -10,6 +10,7 @@ Created on Sun Mar 28 12:36:19 2021
 """
 from PIL import Image, ImageDraw, ImageFont
 import os
+import copy
 
 
 class ListToIMAGE(object):
@@ -33,6 +34,8 @@ class ListToIMAGE(object):
         self.PosY = self.PosYDefaultValue
         self.writingColumLables = False
         self.IMAGE = []
+        self.minColumnLengths = []
+        self.colStrings = None
         self.FONTS = ["FreeMono.ttf","Arialn.ttf","arial.ttf","ArialNarrow2.ttf","ArialNarrowBold.ttf","ArialNarrowBoldItalic.ttf",
                       "ArialNarrowFett.ttf","ArialNarrowFettKursiv.ttf","ArialNarrowFettKursiv2.ttf","ArialNarrowItalic.ttf",
                       "Arialnb.ttf","Arnar.ttf","Arnari.ttf"]
@@ -41,18 +44,19 @@ class ListToIMAGE(object):
         
     def generateImage(self,listData):
         self.selectedPage = 0
+        # print(len(self.columLabels))
         self._setMaxValues(self.columLabels)
-        #print("MaxValue col set")
+        # print("MaxValue col set")
         self._setMaxValues(listData)
-        #print("MaxValue set")        
+        # print("MaxValue set")
         self._setupNumberOfPages(listData)
-        #print("Number of pages set: ",self.numberOfPages)
+        # print("Number of pages set: ",self.numberOfPages)
         self._writeColumnLabels()
-        #print("column label written")
+        # print("column label written")
         self._writeRows(listData)
-        #print("data written")
+        # print("data written")
         self._saveImages()
-        #print("Images saved")
+        # print("Images saved")
         #self._showImages()
         #print("Images Shown")
         
@@ -105,7 +109,33 @@ class ListToIMAGE(object):
                 else:
                     if len(str(item)) > self.maxCollumLength:
                          self.maxCollumLength = len(str(item))
-        self.pageWidth = int((self.maxCollumLength+0.35)*self.numberOfCollumns*self.fontSize*0.65)
+        if type(self.colStrings)==type(None):
+            self.colStrings = 0
+            tempCols = 0
+        else:
+            tempCols = copy.deepcopy(self.colStrings)
+            self.colStrings = 0
+        for col in range(self.numberOfCollumns):
+            if len(self.minColumnLengths) < self.numberOfCollumns:
+                tempMinColLength = 0
+            else:
+                tempMinColLength = self.minColumnLengths[col]
+            for row in range(self.numberOfRows):
+                try:
+                    if len(str(listData[row][col])) > tempMinColLength:
+                        tempMinColLength = len(str(listData[row][col]))
+                        print("tempMin "+str(tempMinColLength))
+                except Exception:
+                    pass
+            if len(self.minColumnLengths)< self.numberOfCollumns:
+                self.minColumnLengths.append(tempMinColLength)
+            else:
+                if self.minColumnLengths[col] < tempMinColLength:
+                    self.minColumnLengths[col] = tempMinColLength
+            self.colStrings += tempMinColLength
+        if self.colStrings < tempCols:
+            self.colStrings = copy.deepcopy(tempCols)
+        self.pageWidth = int((self.colStrings*self.fontSize/1.26))
         self.pageHeight= int(self.pageWidth/1.4145161)
         
     def _writeColumnLabels(self):
@@ -125,16 +155,21 @@ class ListToIMAGE(object):
             if len(row)<self.numberOfCollumns:
                 for i in range(len(row),self.numberOfCollumns):
                     row.append("-")
-            for col in row:
-                if col==None:
+            if len(row)!=len(self.minColumnLengths):
+                print("Padding went wrong")
+            else:
+                print("Padding OK")
+            for i, col in enumerate(row):
+                if type(col) == type(None):
                     col = "-"
-                tempRow = tempRow + self._doPadding(col) +"|"
+                if type(col) == type(int):
+                    col = str(col)
+                tempRow = tempRow + str(self._doPadding(col,self.minColumnLengths[i])) +"|"
             if self.writingColumLables:
                 self._IMD[self.selectedPage].multiline_text((self.PosX,self.PosY), tempRow, font=self.FONT, fill=self.columColor)
             else:
                 #print("Selected Page: ",self.selectedPage)
                 #print("PosY: ",self.PosY)
-                
                 self._IMD[self.selectedPage].multiline_text((self.PosX,self.PosY), tempRow, font=self.FONT, fill=self.fontColor)
             self.PosY += self.fontSize
             if self.writingColumLables:
@@ -148,11 +183,10 @@ class ListToIMAGE(object):
                 if self.selectedPage>=self.numberOfPages:
                     break
                 
-    def _doPadding(self,word):
-        if len(str(word))<=self.maxCollumLength:
-            Remaining = self.maxCollumLength-len(str(word))
+    def _doPadding(self,word, Length):
+        if len(str(word))<=Length:
+            Remaining = Length-len(str(word))
             Spaces = " "*(Remaining//2)
-            
             if self.alignment=="LEFT":
                 word = str(word)+Spaces+Spaces
             elif self.alignment=="CENTER":
@@ -160,7 +194,7 @@ class ListToIMAGE(object):
             elif self.alignment=="RIGHT":
                 word = Spaces+Spaces+str(word)
             if Remaining%2==1:
-                    word = word + " "
+                word = word + " "
             return word
         else:
             return word

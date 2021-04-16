@@ -8,7 +8,7 @@ Created on Sat Mar 27 07:35:47 2021
 @file: InterviewHandler.py
 """
 
-from PyQt5 import QtWidgets #,QtCore, QtGui
+from PyQt5 import QtWidgets
 import sys, json
 import time
 from threading import Thread
@@ -34,7 +34,6 @@ class InterviewHandler(object):
         self.timerStarted = False
         self.timerValue = 0
         self.timerStartTime = 0
-        # self._currentWordSerial = self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["CURRENT_TEST_SERIAL"]
         self.newInterviewSubmited = False
         self.newInterviewFormShowed = False
         self.newInterviewCanceled = False

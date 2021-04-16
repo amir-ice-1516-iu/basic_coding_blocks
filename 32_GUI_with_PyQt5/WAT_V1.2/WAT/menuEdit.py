@@ -225,11 +225,14 @@ class menuEdit_Handler(object):
                             self._rearrangeInterviewWords()
                             self.saveInterviewWords()
                             self.Predefined_Words_Edit_Handler()
-                            break
+                            return 1
+                            #break
                 else:
                     self._showSetupSuccessDialog("Operation Denied", "Word Already Exists")
+                    return 0
         if not addingNewWordSucceed:
             self._showSetupSuccessDialog("Operation Failed", "Limit 200 Word Filled")
+            return 0
     
     def _rearrangeInterviewWords(self):#TODO
         temp_interview_words = dict()
