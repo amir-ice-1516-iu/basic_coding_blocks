@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'GUI_Files/WordAssociationTest.ui'
+# Form implementation generated from reading ui file 'GUI_Files\WordAssociationTest.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.1
 #
@@ -15,16 +15,17 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.ApplicationModal)
         MainWindow.resize(1035, 550)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(1035, 550))
-        MainWindow.setMaximumSize(QtCore.QSize(99999, 99999))
+        MainWindow.setMaximumSize(QtCore.QSize(1280, 720))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/WAT_Dummy_logo.png"), QtGui.QIcon.Active, QtGui.QIcon.On)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet("bg-color: /icons/icons/BackGround.jpg")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -40,7 +41,7 @@ class Ui_MainWindow(object):
         self.welcomeMessage_Panel.setObjectName("welcomeMessage_Panel")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1035, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1035, 21))
         self.menubar.setObjectName("menubar")
         self.menuInterview = QtWidgets.QMenu(self.menubar)
         self.menuInterview.setObjectName("menuInterview")

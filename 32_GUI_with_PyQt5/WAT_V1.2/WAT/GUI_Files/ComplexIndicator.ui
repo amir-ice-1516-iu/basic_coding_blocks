@@ -31,12 +31,12 @@
   <property name="windowTitle">
    <string>Complex Indicator</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>4</y>
-     <width>1061</width>
+     <width>1068</width>
      <height>349</height>
     </rect>
    </property>
@@ -58,6 +58,14 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>true</underline>
+             </font>
+            </property>
             <property name="text">
              <string>Reaction Time</string>
             </property>
@@ -65,6 +73,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category1Type1">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Prolonged reaction times</string>
             </property>
@@ -72,6 +85,51 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category1Type2">
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>120</red>
+                  <green>120</green>
+                  <blue>120</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>Failures</string>
             </property>
@@ -96,6 +154,14 @@
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QLabel" name="meaningCategoryLabel">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>true</underline>
+             </font>
+            </property>
             <property name="text">
              <string>Meaning</string>
             </property>
@@ -103,43 +169,99 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category2Type1">
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>120</red>
+                  <green>120</green>
+                  <blue>120</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
-             <string>Meaningless reactions</string>
+             <string>Not understanding SW</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="category2Type2">
-            <property name="text">
-             <string>Mishearing or not understandable</string>
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>120</red>
+                  <green>120</green>
+                  <blue>120</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category2Type3">
-            <property name="text">
-             <string>Repetition of sw</string>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category2Type4">
             <property name="text">
-             <string>Mediate Reactions</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category2Type5">
-            <property name="text">
-             <string>Rhymes of word completing</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category2Type6">
-            <property name="text">
-             <string>False reproduction</string>
+             <string>Repetition of SW</string>
             </property>
            </widget>
           </item>
@@ -162,6 +284,14 @@
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QLabel" name="physicalReactionsCategoryLabel">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>true</underline>
+             </font>
+            </property>
             <property name="text">
              <string>Physical Reactions</string>
             </property>
@@ -169,15 +299,50 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category3Type1">
-            <property name="text">
-             <string>Gestures, Bodily Movements</string>
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>120</red>
+                  <green>120</green>
+                  <blue>120</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category3Type2">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
-             <string>Physical  excitation</string>
+             <string> Bodily Movements</string>
             </property>
            </widget>
           </item>
@@ -200,6 +365,14 @@
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QLabel" name="speechCategoryLabel">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>true</underline>
+             </font>
+            </property>
             <property name="text">
              <string>Speech</string>
             </property>
@@ -207,36 +380,111 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category4Type1">
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>120</red>
+                  <green>120</green>
+                  <blue>120</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
-             <string>Foreign Language Reactions</string>
+             <string>Multiple Word Responses</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="category4Type2">
+            <property name="palette">
+             <palette>
+              <active>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </active>
+              <inactive>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </inactive>
+              <disabled>
+               <colorrole role="WindowText">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>120</red>
+                  <green>120</green>
+                  <blue>120</blue>
+                 </color>
+                </brush>
+               </colorrole>
+              </disabled>
+             </palette>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
-             <string>Multiple Word Response</string>
+             <string>Sound reactions</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="category4Type3">
-            <property name="text">
-             <string>Slips of the tongue</string>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category4Type4">
             <property name="text">
-             <string>Stuttering, Misprodunciations</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="category4Type5">
-            <property name="text">
-             <string>Sounds, Interjections</string>
+             <string>Invalid reproductions</string>
             </property>
            </widget>
           </item>
@@ -259,6 +507,14 @@
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QLabel" name="patternsCategoryLabel">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>true</underline>
+             </font>
+            </property>
             <property name="text">
              <string>Patterns</string>
             </property>
@@ -266,6 +522,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category5Type1">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Perseveration</string>
             </property>
@@ -273,6 +534,11 @@
           </item>
           <item>
            <widget class="QCheckBox" name="category5Type2">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Stereotypes</string>
             </property>
@@ -327,7 +593,7 @@
         <item>
          <widget class="QLabel" name="selectedTypeLabel">
           <property name="text">
-           <string>Dummy Type..................</string>
+           <string> Dummy Type............</string>
           </property>
          </widget>
         </item>

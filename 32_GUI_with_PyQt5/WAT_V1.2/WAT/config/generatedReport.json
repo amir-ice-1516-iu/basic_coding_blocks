@@ -38,13 +38,18 @@
         "R_T_SEC"           : [],
         "R_WORDS"           : [],
         "R_P_WORDS"         : [],
-        "BODY_REAC"         : [],
-        "OVER_PM"           : [],
+        "PRT"               : [],
         "RE"                : [],
-        "LANGUAGE"          : [],
-        "OTHER"             : [],
-        "CI_S"              : [],
+        "B"                 : [],
+        "MS"                : [],
+        "RSW"               : [],
+        "SO"                : [],
+        "MW"                : [],
         "F"                 : [],
-        "E"                 : []
+        "S"                 : [],
+        "P"                 : [],
+        "TOTAL"             : [],
+        "FACTUAL"           : [],
+        "EGO_CENTRIC"       : []
     }
 }

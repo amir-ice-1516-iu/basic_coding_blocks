@@ -16,6 +16,7 @@ import copy
 from matplotlib import pyplot as plt
 
 from ListToIMAGE import ListToIMAGE
+from menuView import  menuView_Handler
 
 
 class menuDashboard_Handler(object): #TODO
@@ -48,20 +49,29 @@ class menuDashboard_Handler(object): #TODO
         if self._crossCheckInterview():#TODO
             self._saveInterviewReport()
             self._showMessageDialog("Succeed","Report Generated Successfully")
+            Obj = menuView_Handler(self.ui)
+            Obj.Last_Interview_Report_View_Handler()
             return 1
             #call View Report From here
         else:
             if self.ui.DEBUG_MODE:
                 print("Unable to Generate Report")
             return 0
-        
+
+    def _tempRefil(self,Obj,tempTotalWords,default_value):
+        tl = len(Obj)
+        if tl < tempTotalWords:
+            for _ in range(tempTotalWords - tl):
+                Obj.append(default_value)
+                print("appended : "+default_value)
+
     def _crossCheckInterview(self):
         if self.loadInterviewConfiguration():
             pass
         else:
             self._showMessageDialog("Failed", "Unable to load config file: "+self.interviewConfigFile)
             return 0
-        if self.loadInterviewReport(ref=True): #previous was True
+        if self.loadInterviewReport(ref=False): #previous was True
             pass
         else:
             self._showMessageDialog("Failed", "Unable to load report file: "+self.tempConfigFile)
@@ -77,26 +87,22 @@ class menuDashboard_Handler(object): #TODO
             RoundString = "ROUND"+str(Round)+"_RESPONSES"
             RoundReportString = "ROUND"+str(Round)
             RoundDict = copy.deepcopy(self.config[RoundString])
-            #print(RoundDict)
             ReactionTimes = []
-            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["1"]=list()#[] #.append(RoundDict[key]["COMPLEX_INDICATORS"]["Reaction Time"])
-            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["2"]=list()#[] #.append(RoundDict[key]["COMPLEX_INDICATORS"]["Meaning"])
-            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["3"]=list()#[] #.append(RoundDict[key]["COMPLEX_INDICATORS"]["Physical Reactions"])
-            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["4"]=list()#[] #.append(RoundDict[key]["COMPLEX_INDICATORS"]["Speech"])
-            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["5"]=list()#[] #.append(RoundDict[key]["COMPLEX_INDICATORS"]["Patterns"])
-            self.reportConfig[RoundReportString]["REACTION_TIME"]               =list()#[] #.append(RoundDict[key]["TIME_TAKEN"])
-                    
+            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["1"]= list()
+            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["2"]= list()
+            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["3"]= list()
+            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["4"]= list()
+            self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["5"]= list()
+            self.reportConfig[RoundReportString]["REACTION_TIME"]               = list()
+            self.reportConfig[RoundReportString]["REACTION"]                    = list()
             if Round==1:
-                self.reportConfig["SCORES"]["SL"]                                   =list()#[] #.append(RoundDict[key]["SERIAL_NO"])                        
-                self.reportConfig["SCORES"]["S_WORDS"]                              =list()#[] #.append(key)
-                self.reportConfig[RoundReportString]["REACTION"]                    =list()#[] #.append(RoundDict[key]["RESPONSE_WORD"])
-            
+                self.reportConfig["SCORES"]["SL"]                                   = list()
+                self.reportConfig["SCORES"]["S_WORDS"]                              = list()
+
             for key in RoundDict.keys():
                 if type(RoundDict[key])==type(dict()):
                     if key=="EXAMPLE_WORD":
                         continue
-                    #if self.ui.DEBUG_MODE:
-                    #    print(RoundDict[key]["COMPLEX_INDICATORS"])
                     ReactionTimes.append(RoundDict[key]["TIME_TAKEN"])
                     self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["1"].append(RoundDict[key]["COMPLEX_INDICATORS"]["Reaction Time"])
                     self.reportConfig[RoundReportString]["COMPLEX_INDICATOR_TYPES"]["2"].append(RoundDict[key]["COMPLEX_INDICATORS"]["Meaning"])
@@ -106,8 +112,6 @@ class menuDashboard_Handler(object): #TODO
                     self.reportConfig[RoundReportString]["REACTION_TIME"].append(RoundDict[key]["TIME_TAKEN"])
                     if Round==1:
                         self.reportConfig["SCORES"]["SL"].append(RoundDict[key]["SERIAL_NO"])
-                        #if self.ui.DEBUG_MODE:
-                        #    print(self.reportConfig["SCORES"]["SL"])
                         self.reportConfig["SCORES"]["S_WORDS"].append(key)
                         self.reportConfig[RoundReportString]["REACTION"].append(RoundDict[key]["RESPONSE_WORD"])
                     elif Round==2:
@@ -116,77 +120,52 @@ class menuDashboard_Handler(object): #TODO
             MedianPRT = self._calculateMedian(ReactionTimes)
             self.config[RoundString]["MEDIAN_PRT"] = MedianPRT
             self.reportConfig[RoundReportString]["MEDIAN_PRT"] = MedianPRT
-            #if self.ui.DEBUG_MODE:
-            #    print(self.reportConfig)
         tempTotalWords = len(self.reportConfig["ROUND1"]["REACTION_TIME"])
         if tempTotalWords==len(self.reportConfig["ROUND2"]["REACTION_TIME"]): # checking wheather report can be produced or has enough info to report
-            # Column 4, 5, 6, 7, 8, 9, 10 Scores
-            self.reportConfig["SCORES"]["R_T_5TH"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["R_WORDS"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["R_P_WORDS"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["BODY_REAC"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["OVER_PM"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["RE"]= ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["LANGUAGE"] = ["0"]*tempTotalWords
-            self.reportConfig["SCORES"]["OTHER"] = ["0"]*tempTotalWords
-            # Column 3 Scores
-            self.reportConfig["SCORES"]["R_T_SEC"] = self.reportConfig["ROUND1"]["REACTION_TIME"]
-            # Column 4, 5, 6, 7, 8, 9, 10 Scores
+            # Column 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 Scores
+            self._tempRefil(self.reportConfig["SCORES"]["R_T_5TH"]      , tempTotalWords,"-")
+            self._tempRefil(self.reportConfig["SCORES"]["R_WORDS"]      , tempTotalWords, " ")
+            self._tempRefil(self.reportConfig["SCORES"]["R_P_WORDS"]    , tempTotalWords, " ")
+            for i, key in enumerate(self.reportConfig["SCORES"].keys()):
+                if i >= 6 and i <= 15:
+                    self._tempRefil(self.reportConfig["SCORES"][key]          , tempTotalWords, " ")
+            self._tempRefil(self.reportConfig["SCORES"]["TOTAL"]        , tempTotalWords, "0")
+            self._tempRefil(self.reportConfig["SCORES"]["FACTUAL"]      , tempTotalWords, " ")
+            self._tempRefil(self.reportConfig["SCORES"]["EGO_CENTRIC"]  , tempTotalWords, " ")
+            # Column 3, 4, 5 Scores
+            self.reportConfig["SCORES"]["R_T_SEC"]      = self.reportConfig["ROUND1"]["REACTION_TIME"]
+            self.reportConfig["SCORES"]["R_WORDS"]      = self.reportConfig["ROUND1"]["REACTION"]
+            self.reportConfig["SCORES"]["R_P_WORDS"]    = self.reportConfig["ROUND2"]["REACTION"]
+            # Column 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 Scores
             for row in range(tempTotalWords):
-                logic4 = "F" in self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["1"][row] #or self.reportConfig["ROUND2"]["COMPLEX_INDICATOR_TYPES"]["1"] 
-                logic5 = self.reportConfig["ROUND1"]["REACTION"][row] == self.reportConfig["ROUND2"]["REACTION"][row]
-                CIT1 = self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["3"] 
-                logic6 = "GBM" in CIT1 or "PE" in CIT1 
-                logic7 = self.reportConfig["ROUND2"]["REACTION_TIME"][row] > self.reportConfig["ROUND1"]["MEDIAN_PRT"] #or self.reportConfig["ROUND2"]["REACTION_TIME"][row] > self.reportConfig["ROUND2"]["MEDIAN_PRT"] 
-                logic8 = logic5 #Logic not given to me
-                R1C4 = self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["4"]
-                logic9 = "FLR" in R1C4 or "MW" in R1C4 or "ST" in R1C4 or "SMP" in R1C4 or "SO" in R1C4
-                R1C2 = self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["2"]
-                R1C5 = self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["5"]
-                logic10_a = "MLR" in R1C2 or "MS" in R1C2 or "RSW" in R1C2 or "MR" in R1C2 or "RWC" in R1C2 or "FR" in R1C2
-                logic10_b = "P" in R1C5 or "S" in R1C5
-                #Column2
+                SW = self.reportConfig["SCORES"]["S_WORDS"][row]
+                logic6 = self.reportConfig["ROUND1"]["REACTION_TIME"][row] > self.reportConfig["ROUND1"]["MEDIAN_PRT"]
+                logic7 = self.config["ROUND1_RESPONSES"][SW] == self.config["ROUND2_RESPONSES"][SW]
+                logic8 = "B"   in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Physical Reactions"]
+                logic9 = "MS"  in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Meaning"]
+                logic10= "RSW" in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Meaning"]
+                logic11= "SO"  in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Speech"]
+                logic12= "MW"  in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Speech"]
+                logic13 = "F"  in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Reaction Time"]
+                logic14 = "S"  in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Patterns"]
+                logic15 = "P"  in self.config["ROUND1_RESPONSES"][SW]["COMPLEX_INDICATORS"]["Patterns"]
+                logics = [logic6, logic7, logic8, logic9, logic10, logic11, logic12, logic13, logic14, logic15]
+                # Column2 R_T_5TH:
                 self.reportConfig["SCORES"]["R_T_5TH"][row] = int((self.reportConfig["SCORES"]["R_T_SEC"][row]*5)+0.5)
-                #Column4
-                if logic4:
-                    self.reportConfig["SCORES"]["R_WORDS"][row] = "2"
-                #Column5
-                if logic5:
-                    self.reportConfig["SCORES"]["R_P_WORDS"][row] = "1"
-                #Column6 Body Reaction
-                if logic6:
-                    self.reportConfig["SCORES"]["BODY_REAC"][row] = "1"
-                #Column7 Over Prolonged reaction time Median:
-                if logic7:
-                    self.reportConfig["SCORES"]["OVER_PM"][row] = "1"
-                #Column8 Invalid reproduction of response word
-                if logic8:
-                    self.reportConfig["SCORES"]["RE"][row] = "1"
-                #Column9 Language Reaction
-                if logic9:
-                    self.reportConfig["SCORES"]["LANGUAGE"][row] = "1"
-                #Column10 Other Reactions
-                if logic10_a or logic10_b:
-                    self.reportConfig["SCORES"]["OTHER"][row] = "1"
-           
-            
-            #Column 11 CI_Scores in total
-            self.reportConfig["SCORES"]["CI_S"] = ["0"]*tempTotalWords
-            LF = len(self.reportConfig["SCORES"]["F"])
-            if LF < self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]:
-                for i in range(LF,self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
-                    self.reportConfig["SCORES"]["F"].append(" ")
-            LE = len(self.reportConfig["SCORES"]["E"])
-            if LE < self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]:
-                for i in range(LE, self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
-                    self.reportConfig["SCORES"]["E"].append(" ")
-            for row in range(tempTotalWords):
-                CI_SCORE = 0
-                CI_SCORE += int(self.reportConfig["SCORES"]["OVER_PM"][row])
-                CI_SCORE += int(self.reportConfig["SCORES"]["RE"][row])
-                CI_SCORE += int(self.reportConfig["SCORES"]["LANGUAGE"][row])
-                CI_SCORE += int(self.reportConfig["SCORES"]["OTHER"][row])
-                self.reportConfig["SCORES"]["CI_S"][row] = str(CI_SCORE)
+                current_logic = 0
+                temp_Counter = 0
+                for i,key in enumerate(self.reportConfig["SCORES"].keys()):
+                    if i>=6 and i<=15:
+                        if logics[current_logic]:
+                            self.reportConfig["SCORES"][key][row] = key
+                        if self.reportConfig["SCORES"][key][row] != " ":
+                            if i==13:
+                                temp_Counter += 2
+                            else:
+                                temp_Counter += 1
+                        current_logic += 1
+                # Column16
+                self.reportConfig["SCORES"]["TOTAL"][row] = str(temp_Counter)
             self.reportConfig["IS_READY_TO_GENERATE_GRAPH"] = 1
         else:
             self._showMessageDialog("Status Pending", "Interview Not Completed Yet")
@@ -197,9 +176,7 @@ class menuDashboard_Handler(object): #TODO
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
         fileName, d = QtWidgets.QFileDialog.getSaveFileName(self.ui.centralwidget,"QFileDialog.getSaveFileName()","","WAT Interview (*.png);;All Files (*)", options=options)
-        #file_name = QtWidgets.QFileDialog.getSaveFileName(self.ui.centralwidget, 'Save File')
         if len(fileName):
-            #self.newInterview.closeInterview()
             path, filename = os.path.split(fileName)
             if filename:
                 self.imageFileToSave = filename
@@ -229,14 +206,10 @@ class menuDashboard_Handler(object): #TODO
                 L = []
                 Cols = list(self.reportConfig["SCORES"].keys())
                 Pad = []
-                for i in range(65,79):
-                    #Col.append(str(chr(i))*9)
-                    Pad.append("_"*9)
+                for i in range(len(Cols)):
+                    Pad.append("_"*len(Cols[i]))
                 Obj.setColumLabels([Pad,Cols,Pad])
-                #Obj.setAlignment("LEFT")
                 Obj.setAlignment("CENTER")
-                #Obj.setAlignment("RIGHT")
-                
                 for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
                     tempRow = []
                     for col in Cols:
@@ -249,32 +222,27 @@ class menuDashboard_Handler(object): #TODO
                     L.append(tempRow)
                     L.append(Pad)
                 if self.ui.DEBUG_MODE:
-                    print("Build End")
+                    print("Build End1")
                 Obj.setFontSize(50)
-                #for i in range(len(Obj.FONTS)):
-                #    Obj.FONT_INDEX = i
-                #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
                 Obj.generateImage(L)
                 if self.ui.DEBUG_MODE:
                     print("Saving End1")
-                
+
                 Obj = ListToIMAGE()
                 Obj.setImageFileName(ABS_Path[:-4]+str("R2")+ABS_Path[-4:])
                 L = []
                 Cols = list(self.reportConfig["SCORES"].keys())
                 Pad = []
-                for i in range(65,79):
-                    #Col.append(str(chr(i))*9)
-                    Pad.append("_"*9)
-                Obj.setColumLabels([Pad,Cols,Pad])
-                #Obj.setAlignment("LEFT")
+                for i in range(len(Cols)):
+                    Pad.append("_" * len(Cols[i]))
+                Labels = ["","","","","","Words","With","2","or","more","points","","","","",""]
+                Obj.setColumLabels([Pad,Labels,Pad])
                 Obj.setAlignment("CENTER")
-                #Obj.setAlignment("RIGHT")
-                L.append(["","","","Words","With","2","or","more","points","","",""])
+                L.append(Cols)
                 L.append(Pad)
                 for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
                     tempRow = []
-                    if int(self.reportConfig["SCORES"]["CI_S"][row]) >= 2:
+                    if int(self.reportConfig["SCORES"]["TOTAL"][row]) >= 2:
                         for col in Cols:
                             if col=="R_WORDS":
                                 tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
@@ -284,29 +252,24 @@ class menuDashboard_Handler(object): #TODO
                                 tempRow.append(self.reportConfig["SCORES"][col][row])
                         L.append(tempRow)
                         L.append(Pad)
-                        
+
                 if self.ui.DEBUG_MODE:
                     print("Build End2")
                 Obj.setFontSize(50)
-                #for i in range(len(Obj.FONTS)):
-                #    Obj.FONT_INDEX = i
-                #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
                 Obj.generateImage(L)
-                
-                
+
+
                 Obj = ListToIMAGE()
                 Obj.setImageFileName(ABS_Path[:-4]+str("Stereos")+ABS_Path[-4:])
                 L = []
                 Cols = list(self.reportConfig["SCORES"].keys())
                 Pad = []
-                for i in range(65,79):
-                    #Col.append(str(chr(i))*9)
-                    Pad.append("_"*9)
-                Obj.setColumLabels([Pad,Cols,Pad])
-                #Obj.setAlignment("LEFT")
+                for i in range(len(Cols)):
+                    Pad.append("_" * len(Cols[i]))
+                Labels = ["","","","","","","Words","With","stereo","types","in","any","round","","","","","",""]
+                Obj.setColumLabels([Pad,Labels,Pad])
                 Obj.setAlignment("CENTER")
-                #Obj.setAlignment("RIGHT")
-                L.append(["","","","Words","With","stereo","types","in","any","round","","",""])
+                L.append(Cols)
                 L.append(Pad)
                 for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
                     tempRow = []
@@ -322,16 +285,12 @@ class menuDashboard_Handler(object): #TODO
                                 tempRow.append(self.reportConfig["SCORES"][col][row])
                         L.append(tempRow)
                         L.append(Pad)
-                        
+
                 if self.ui.DEBUG_MODE:
                     print("Build End3")
                 Obj.setFontSize(50)
-                #for i in range(len(Obj.FONTS)):
-                #    Obj.FONT_INDEX = i
-                #    Obj.setImageFileName(ABS_Path[:-4]+"_FONT_"+str(i)+ABS_Path[-4:])
                 Obj.generateImage(L)
-                
-                
+
                 Height_ROUND1 = self.reportConfig["ROUND1"]["REACTION_TIME"]
                 Height_ROUND2 = self.reportConfig["ROUND2"]["REACTION_TIME"]
                 Domain_S_WORDS = self.reportConfig["SCORES"]["S_WORDS"]
@@ -341,21 +300,21 @@ class menuDashboard_Handler(object): #TODO
                 Domain_X2 = []
                 Colors1 = ["green"]*len(Height_ROUND1)
                 Colors2 = ["green"]*len(Height_ROUND2)
-                
+
                 for i in range(len(Domain_S_WORDS)):
                     Domain_X1.append(Domain_S_WORDS[i]+"\n"+Domain_RESPONSE[i])
                     if Height_ROUND1[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
                         Colors1[i] = "red"
                 for i in range(len(Domain_S_WORDS)):
                     Domain_X2.append(Domain_S_WORDS[i]+"\nRP:"+Domain_REPRODUCTION[i])
-                    if Height_ROUND2[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:                
+                    if Height_ROUND2[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
                         Colors2[i] = "red"
-                
+
                 y = [self.reportConfig["ROUND1"]["MEDIAN_PRT"]]*len(Domain_S_WORDS)
                 fig, ax1 = plt.subplots()
                 ax1.bar(Domain_S_WORDS, Height_ROUND1, color=Colors1)
                 plt.xticks(rotation=90)
-                plt.yticks(rotation=90)               
+                plt.yticks(rotation=90)
                 ax2 = ax1.twiny()
                 ax2.bar(Domain_RESPONSE, Height_ROUND1, color=Colors1)
                 plt.xticks(rotation=90)
@@ -364,15 +323,18 @@ class menuDashboard_Handler(object): #TODO
                 ax2.plot(range(len(Domain_S_WORDS)),y)
                 ax1.set_ylabel("Time in Seconds")
                 plt.savefig(ABS_Path[:-4]+"Graph_Round1"+ABS_Path[-4:])
-                
+
                 #plt.clear()
                 if self.ui.DEBUG_MODE:
                     print("Plot1 End")
                 fig, Ax1 = plt.subplots()
+                print(len(Domain_S_WORDS))
                 Ax1.bar(Domain_S_WORDS, Height_ROUND2, color=Colors2)
                 plt.xticks(rotation=90)
                 plt.yticks(rotation=90)
                 Ax2 = Ax1.twiny()
+                print(len(Domain_REPRODUCTION))
+                print(len(Height_ROUND2))
                 Ax2.bar(Domain_REPRODUCTION,Height_ROUND2, color=Colors2)
                 plt.xticks(rotation=90)
                 plt.yticks(rotation=90)
@@ -382,12 +344,12 @@ class menuDashboard_Handler(object): #TODO
                 plt.savefig(ABS_Path[:-4]+"Graph_Round2"+ABS_Path[-4:])
                 if self.ui.DEBUG_MODE:
                     print("Plot2 End")
-                
-                self._showMessageDialog(" Exported Successfuly","Exported to png successffully")
+
+                self._showMessageDialog(" Exported Successfully","Exported to png successfully")
+            else:
+                self._showMessageDialog(" Export Halt", "Generate Report First")
         except Exception as eExportPng:
             if self.ui.DEBUG_MODE:
-                #sys.stderr.write("Unable to Export")
-                #sys.stderr.write(str(eExportPng))
                 assert("unable to Export " + str(eExportPng))
             self._showMessageDialog(" Denied ", "Failed to Export"+str(eExportPng))
     
@@ -455,6 +417,8 @@ class menuDashboard_Handler(object): #TODO
         if self._crossCheckInterview():#TODO
             self._saveInterviewReport()
             self._showMessageDialog("Succeed","Report Generated & Saved Successfully")
+            Obj = menuView_Handler(self.ui)
+            Obj.Last_Interview_Report_View_Handler()
             #call View Report From here
         else:
             if self.ui.DEBUG_MODE:
@@ -470,10 +434,8 @@ class menuDashboard_Handler(object): #TODO
             return 1
         except Exception as eSave:
             if self.ui.DEBUG_MODE:
-                #sys.stderr.write(self.tempConfigFile+" Unable to Save Generated Report")
-                #sys.stderr.write(str(eOpen))
                 assert("Unablel to save generated report "+str(eSave))
-            #sys.exit(8)
+            #self._showMessageDialog("Save Failed","Error in saving Report")
             return 0
     
     def getGeneratedReport(self):
@@ -483,16 +445,9 @@ class menuDashboard_Handler(object): #TODO
     def _showMessageDialog(self,title, message):
         msg = QtWidgets.QMessageBox()
         msg.setIcon(QtWidgets.QMessageBox.Information)
-        
         msg.setText(message)
-        #msg.setInformativeText("This is additional information")
         msg.setWindowTitle(title)
-        #msg.setDetailedText("The details are as follows:")
         msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-        #msg.buttonClicked.connect(self._msgbtn)
         retval = msg.exec_()
         if self.ui.DEBUG_MODE:
             print("value of pressed message box button:", retval)
-	
-    #def _msgbtn(i):
-    #    print("Button pressed is:",i)

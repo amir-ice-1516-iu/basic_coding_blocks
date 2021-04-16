@@ -20,6 +20,7 @@ import Interview
 
 
 class InterviewHandler(object):
+
     def __init__(self, ui, configFile="interview.json"):
         self.configFile = configFile
         self.configFilePath = "temp_config"
@@ -33,7 +34,7 @@ class InterviewHandler(object):
         self.timerStarted = False
         self.timerValue = 0
         self.timerStartTime = 0
-        #self._currentWordSerial = self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["CURRENT_TEST_SERIAL"]     
+        # self._currentWordSerial = self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["CURRENT_TEST_SERIAL"]
         self.newInterviewSubmited = False
         self.newInterviewFormShowed = False
         self.newInterviewCanceled = False
@@ -160,6 +161,7 @@ class InterviewHandler(object):
                     sys.stderr.write("Invalid round")
                 sys.exit(6)
         if self._currentWordSerial > self.config["NUMBER_OF_WORDS_IN_TEST"]:
+            print("Interview Ended")
             return 0
         self._wordSerailMessage = "Word "+str(self._currentWordSerial)
         self.I_FORM.wordSerialNumberLabel.setText(self._wordSerailMessage)
@@ -263,7 +265,7 @@ class InterviewHandler(object):
                 #return
             else:
                 if self.ui.DEBUG_MODE:
-                    sys.stderr.write("Something wrong happed invalid current round")
+                    sys.stderr.write("Something wrong happened invalid current round")
                 sys.exit(7)
         else:
             self.processAssociatedComplexIndicators()
@@ -306,7 +308,7 @@ class InterviewHandler(object):
             self.timerValue = time.time()-self.timerStartTime
             self.timerValue *= 100
             self.timerValue = int(self.timerValue)/100.00
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.I_FORM.timerLabel.display(str(self.timerValue))
 
     def _showSetupSuccessDialog(self,title, message):

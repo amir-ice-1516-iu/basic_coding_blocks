@@ -90,12 +90,12 @@ if __name__=='__main__':
     MainWindow.show()
     ErrorNo= app.exec_()
     try:
-        src = "config/interview.json"
-        dst = "temp_config/interview.json"
-        #from shutil import copyfile
-        #copyfile(src, dst)
+        src = "config/generatedReport.json"
+        dst = "temp_config/generatedReport.json"
+        from shutil import copyfile
+        copyfile(src, dst)
     except Exception as eRemove:
-        sys.stderr.write("Unable to remove file")
+        sys.stderr.write("Unable to copy ref generatedReport file")
         sys.stderr(str(eRemove))
         sys.exit(0)
     sys.exit(ErrorNo)

@@ -13,7 +13,7 @@ Created on Sat Mar 27 07:38:49 2021
     showComplexIndicatorInput()
     hideComplexIndicatorInput()
     _setEditMode()
-    viewComplexIndiciatorHandler()
+    viewComplexIndicatorHandler()
     editComplexIndicatorHandler()
 """
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -33,7 +33,7 @@ class ComplexIndicatorHandler(object):
         
         self.loadComplexIndicatorConfiguration()
         
-        #self.generateComplexIndicatorForm()
+        # self.generateComplexIndicatorForm()
     
     def generateComplexIndicatorForm(self):
         if self.inTestSession:
@@ -41,7 +41,7 @@ class ComplexIndicatorHandler(object):
             print("CI selection widget")
         else:
             self.ComplexIndicatorViewForm = QtWidgets.QWidget(self.ui.centralwidget)
-        #ComplexIndicatorView = QtWidgets.QWidget()         
+        # ComplexIndicatorView = QtWidgets.QWidget()
         self.CI_FORM = ComplexIndicator.Ui_Form()
         self.CI_FORM.setupUi(self.ComplexIndicatorViewForm)
         
@@ -52,7 +52,7 @@ class ComplexIndicatorHandler(object):
             with open(self.configFile, "r") as fp:
                 self.config = json.load(fp)
         except Exception as eOpen:
-            sys.stderr.write(self.configFile," No such config file or directory")
+            sys.stderr.write(self.configFile+" No such config file or directory")
             sys.stderr.write(eOpen)
             sys.exit(2)
             
@@ -97,7 +97,7 @@ class ComplexIndicatorHandler(object):
         self.CI_FORM.selectedComplexIndicatorCategory.setVisible(not self.inTestSession)
         self.CI_FORM.doneSetupButton.setVisible(not self.inTestSession)
         
-    def viewComplexIndiciatorHandler(self):
+    def viewComplexIndicatorHandler(self):
         self._setEditMode()
         self.ComplexIndicatorViewForm.show()
          

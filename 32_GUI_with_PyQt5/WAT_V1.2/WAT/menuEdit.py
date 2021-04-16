@@ -67,7 +67,7 @@ class menuEdit_Handler(object):
                 json.dump(self.interview_words, fp, indent=4)
             return 1
         except Exception as eWordSave:
-            sys.stderr.write("Unable to save ",self.wordFile," file")
+            sys.stderr.write("Unable to save "+self.wordsFile+" file")
             sys.stderr.write(str(eWordSave))
             return 0
                 
@@ -100,13 +100,6 @@ class menuEdit_Handler(object):
             pass
         else:
             return 0
-        
-        #if self.loadInterviewConfiguration():
-        #    pass
-        #else:
-        #    self._showSetupSuccessDialog("Error Report file","No interview report file generated yet")
-        #    return
-        
         self.GRFormWidget = QtWidgets.QWidget(self.ui.centralwidget)     
         self.GR_FORM = GeneratedReport.Ui_Form()
         self.GR_FORM.setupUi(self.GRFormWidget)
@@ -305,6 +298,7 @@ class menuEdit_Handler(object):
         else:
             if self.ui.DEBUG_MODE:
                 print("Unable to load interview words")
+                return
         WordSerialNumber = list(self.interview_words.keys())
         ShouldBreak = False
         sl = 0
@@ -332,26 +326,16 @@ class menuEdit_Handler(object):
     
     def _setReportValues(self): #TODO
         self.loadInterviewConfiguration()
-        print(self.config)
         MAX_ROWS_TO_SHOW = 0
         if self.ui.DEBUG_MODE:
             print("Setting parameters")
         if self.ReportGeneratorObj:
             MAX_ROWS_TO_SHOW = int(self.ReportGeneratorObj.reportConfig["NUMBER_OF_WORDS_IN_TEST"])
             Column = []
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["S_WORDS"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["R_T_5TH"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["R_T_SEC"])
-            Column.append(self.ReportGeneratorObj.reportConfig["ROUND1"]["REACTION"])
-            Column.append(self.ReportGeneratorObj.reportConfig["ROUND2"]["REACTION"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["BODY_REAC"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["OVER_PM"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["RE"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["LANGUAGE"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["OTHER"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["CI_S"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["F"])
-            Column.append(self.ReportGeneratorObj.reportConfig["SCORES"]["E"])  
+            temp_fileds = self.ReportGeneratorObj.reportConfig["SCORES"].keys()
+            for temp_field in temp_fileds:
+                if temp_field != "SL":
+                    Column.append(self.ReportGeneratorObj.reportConfig["SCORES"][temp_field])
             MAX_COLS_TO_SHOW = len(Column)
             if self.ui.DEBUG_MODE:
                 print("ROWS, COLUMNS: ",MAX_ROWS_TO_SHOW,MAX_COLS_TO_SHOW)
@@ -360,42 +344,6 @@ class menuEdit_Handler(object):
                     self.GR_FORM.generatedReport.setItem(row,col, QtWidgets.QTableWidgetItem(str(Column[col][row])))
         else:
             self._showSetupSuccessDialog("Error", "Report not Generated Yet")
-        #for Round in range(1,3):
-        #    RoundDict = self.config["ROUND"+str(Round)+"_RESPONSES"]
-            #print(RoundDict)
-        #    StimulusWords = RoundDict.keys()
-        #    MAX_ROWS_TO_SHOW = max(MAX_ROWS_TO_SHOW,len(StimulusWords))
-        #    currentIndex = 0
-        #    for key in StimulusWords:
-        #        if type(RoundDict[key])==type(dict()):
-        #            if key != "EXAMPLE_WORD":
-        #                if Round==1:
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex,0, QtWidgets.QTableWidgetItem(key))
-                            #if self.ui.DEBUG_MODE:
-                            #    print(key)
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex,1, QtWidgets.QTableWidgetItem(str(RoundDict[key]["TIME_TAKEN"]*5.0)))
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex,2, QtWidgets.QTableWidgetItem(str(RoundDict[key]["TIME_TAKEN"])))
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex,3, QtWidgets.QTableWidgetItem(RoundDict[key]["RESPONSE_WORD"]))
-                            #if self.ui.DEBUG_MODE:
-                            #    print(RoundDict[key]["RESPONSE_WORD"])
-        #                elif Round==2:
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex,4, QtWidgets.QTableWidgetItem(RoundDict[key]["RESPONSE_WORD"]))
-        #                try:
-        #                    BodyMovementField = ",".join(RoundDict[key]["COMPLEX_INDICATORS"]["Physical Reactions"])
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex,5, QtWidgets.QTableWidgetItem(BodyMovementField))
-        #                except Exception as eBodyMovementField:
-        #                    sys.stderr.write(str(eBodyMovementField))
-                        
-        #                try:
-        #                    SoundReaction = ",".join(RoundDict[key]["COMPLEX_INDICATORS"]["Speech"])
-        #                    self.GR_FORM.generatedReport.setItem(currentIndex, 8, QtWidgets.QTableWidgetItem(SoundReaction))
-        #                except Exception as eSoundReaction:
-        #                    sys.stderr.write(str(eSoundReaction))
-                            
-        #                currentIndex += 1
-        #    for row in range(100):
-        #            if row > (MAX_ROWS_TO_SHOW-3):
-        #               self.GR_FORM.generatedReport.hideRow(row)
     
     def _getReportValues(self):
         if self.ui.DEBUG_MODE:
@@ -403,36 +351,34 @@ class menuEdit_Handler(object):
         if self.ReportGeneratorObj:
             MAX_ROWS_TO_GET = int(self.ReportGeneratorObj.reportConfig["NUMBER_OF_WORDS_IN_TEST"])
             for row in range(MAX_ROWS_TO_GET):
-                    self.ReportGeneratorObj.reportConfig["SCORES"]["S_WORDS"][row]=self.GR_FORM.generatedReport.item(row,0).text()
-                    try:
-                        self.config["ROUND1_RESPONSES"][self.GR_FORM.generatedReport.item(row,0).text()]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(row,3).text()
-                        self.config["ROUND2_RESPONSES"][self.GR_FORM.generatedReport.item(row,0).text()]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(row,4).text()
-                    except Exception as eEdit:
-                        assert("Unable to update edited to temp_config/interview.json"+str(eEdit))
-                    self.ReportGeneratorObj.reportConfig["SCORES"]["R_T_5TH"][row]=self.GR_FORM.generatedReport.item(row,1).text()
-                    self.ReportGeneratorObj.reportConfig["SCORES"]["R_T_SEC"][row]=self.GR_FORM.generatedReport.item(row,2).text()
-                    self.ReportGeneratorObj.reportConfig["ROUND1"]["REACTION"][row]=self.GR_FORM.generatedReport.item(row,3).text()
-                    self.ReportGeneratorObj.reportConfig["ROUND2"]["REACTION"][row]=self.GR_FORM.generatedReport.item(row,4).text()
-                    self.ReportGeneratorObj.reportConfig["SCORES"]["F"][row]=self.GR_FORM.generatedReport.item(row,11).text()
-                    self.ReportGeneratorObj.reportConfig["SCORES"]["E"][row]=self.GR_FORM.generatedReport.item(row,12).text()
+                GR = self.GR_FORM.generatedReport
+                self.ReportGeneratorObj.reportConfig["SCORES"]["S_WORDS"][row]= GR.item(row,0).text()
+                try:
+                    self.config["ROUND1_RESPONSES"][self.GR_FORM.generatedReport.item(row,0).text()]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(row,3).text()
+                    self.config["ROUND2_RESPONSES"][self.GR_FORM.generatedReport.item(row,0).text()]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(row,4).text()
+                except Exception as eEdit:
+                    assert("Unable to update edited to temp_config/interview.json"+str(eEdit))
+                temp_fileds = self.ReportGeneratorObj.reportConfig["SCORES"].keys()
+                col= 0
+                for temp_field in temp_fileds:
+                    if temp_field != "SL":
+                        self.ReportGeneratorObj.reportConfig["SCORES"][temp_field][row] = GR.item(row,col).text()
+                        col += 1
+
+                temp_Counter = 0
+                for i, key in enumerate(self.ReportGeneratorObj.reportConfig["SCORES"].keys()):
+                    if i >= 6 and i <= 15:
+                        POINT_EARNED = "1"
+                        if self.ReportGeneratorObj.reportConfig["SCORES"][key][row] != " ":
+                            if i == 13:
+                                temp_Counter += 2
+                            else:
+                                temp_Counter += 1
+                self.ReportGeneratorObj.reportConfig["SCORES"]["TOTAL"][row] = str(temp_Counter)
+                self.ReportGeneratorObj.reportConfig["ROUND1"]["REACTION"][row] = GR.item(row, 3).text()
+                self.ReportGeneratorObj.reportConfig["ROUND2"]["REACTION"][row] = GR.item(row, 4).text()
         else:
             self._showSetupSuccessDialog("Error", "Report not Generated Yet!!!")
-        #for Round in range(1,3):
-        #    RoundString = "ROUND"+str(Round)+"_RESPONSES"
-        #    RoundDict = self.config[RoundString]
-            #print(RoundDict)
-        #    StimulusWords = RoundDict.keys()
-        #    currentIndex = 0
-        #    for key in StimulusWords:
-        #        if type(RoundDict[key])==type(dict()):
-        #            if key != "EXAMPLE_WORD":
-        #                if Round==1:
-        #                    self.config[RoundString][key]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(currentIndex,3).text()
-                            #if self.ui.DEBUG_MODE:
-                            #    print(RoundDict[key]["RESPONSE_WORD"])
-        #                elif Round==2:
-        #                    self.config[RoundString][key]["RESPONSE_WORD"] = self.GR_FORM.generatedReport.item(currentIndex,4).text()
-        #                currentIndex += 1
                         
     def onUpdateReportClicked(self):
         """ do hunky punky"""
@@ -440,25 +386,15 @@ class menuEdit_Handler(object):
         self.saveUpdatedReport()
         if self.ReportGeneratorObj:
             self.ReportGeneratorObj._saveInterviewReport()
-            if self.ui.DEBUG_MODE:
-                print(self.ReportGeneratorObj.reportConfig["SCORES"]["F"])
-                print(self.ReportGeneratorObj.reportConfig["SCORES"]["E"])
         self._showSetupSuccessDialog("Updated Report", "Report Updated Successfully")
         self.GRFormWidget.close()
     
     def _showSetupSuccessDialog(self,title, message):
         msg = QtWidgets.QMessageBox()
         msg.setIcon(QtWidgets.QMessageBox.Information)
-        
         msg.setText(message)
-        #msg.setInformativeText("This is additional information")
         msg.setWindowTitle(title)
-        #msg.setDetailedText("The details are as follows:")
         msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-        #msg.buttonClicked.connect(self._msgbtn)
         retval = msg.exec_()
         if self.ui.DEBUG_MODE:
             print("value of pressed message box button:", retval)
-	
-    #def _msgbtn(i):
-    #    print("Button pressed is:",i)
