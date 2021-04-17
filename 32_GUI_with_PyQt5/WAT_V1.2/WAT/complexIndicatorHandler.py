@@ -28,7 +28,7 @@ class ComplexIndicatorHandler(object):
     def __init__(self, ui, configFile="config/complexIndicators.json"):
         
         self.ui = ui
-        self.configFile = configFile
+        self.configFile = ui.complexIndicatorsConfigFile
         self.inTestSession = True
         
         self.loadComplexIndicatorConfiguration()

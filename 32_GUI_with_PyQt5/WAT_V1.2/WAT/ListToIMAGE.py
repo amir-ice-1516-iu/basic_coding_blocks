@@ -9,14 +9,17 @@ Created on Sun Mar 28 12:36:19 2021
 @purpose: to convert 2D list into Image as Report
 """
 from PIL import Image, ImageDraw, ImageFont
+import PIL
 import os
 import copy
+# import matplotlib
 
 
 class ListToIMAGE(object):
     
-    def __init__(self,imageFile="LTI.png"):
+    def __init__(self,imageFile="LTI.png", fontFilePath = "fonts"):
         self.imageFile = imageFile
+        self.fontFilePath = fontFilePath
         self.fontSize = 20
         self.fontColor = (0,0,0)
         self.bgColor = (255,255,255)
@@ -25,7 +28,7 @@ class ListToIMAGE(object):
         self.numberOfCollumns = 1
         self.numberOfRows = 1
         self.numberOfPages = 1
-        self.numberOfLinesPerPage = 50
+        self.numberOfLinesPerPage = 40
         self.selectedPage = 0
         self.columLabels = []
         self.alignment = "LEFT"
@@ -81,7 +84,10 @@ class ListToIMAGE(object):
         for newPage in range(self.numberOfPages):
             self.IMAGE.append(Image.new("RGB", (self.pageWidth,self.pageHeight), self.bgColor))
             self._IMD.append(ImageDraw.Draw(self.IMAGE[-1]))
-        self.FONT = ImageFont.truetype(os.path.join("fonts",self.FONTS[self.FONT_INDEX]), self.fontSize)
+        tempPath = os.path.join(self.fontFilePath,self.FONTS[self.FONT_INDEX])
+        # tempPath = tempPath.replace("/","\\")
+        print(tempPath)
+        self.FONT = PIL.ImageFont.truetype(tempPath, self.fontSize)
     
     def _setMaxValues(self,listData):
         if type(listData)!=type(list()):
@@ -207,6 +213,8 @@ class ListToIMAGE(object):
         self.columLabels = Labels
     def setBgColor(self,bgColor):
         self.bgColor = bgColor
+    def setFontFilePath(self, newFontFilePath):
+        self.fontFilePath = newFontFilePath
     def setFontSize(self,size):
         self.fontSize = size
     def setFontColor(self,color):
@@ -219,6 +227,8 @@ class ListToIMAGE(object):
         return self.columColor
     def getAlignment(self):
         return self.alignment
+    def getFontFilePath(self):
+        return self.fontFilePath
     def getFontColor(self):
         return self.fontColor
     def getFontSize(self):

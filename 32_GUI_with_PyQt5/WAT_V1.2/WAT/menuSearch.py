@@ -9,13 +9,14 @@ Created on Sat Mar 27 06:07:18 2021
 """
 
 import menuEdit
+import os
 
 class menuSearch_Handler(object):
     
     def __init__(self, ui, configFile="interview.json"):
         self.ui = ui
-        self.configFile = configFile
-        self.configFilePath = "config"
+        self.configFile = os.path.split(ui.configFile)[1]
+        self.configFilePath = os.path.split(ui.configFile)[0]
         self.PredefinedWordSearch = menuEdit.menuEdit_Handler(ui, configFile)
 
     def Predefined_Words_Search_Handler(self): #TODO

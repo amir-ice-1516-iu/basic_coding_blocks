@@ -13,6 +13,7 @@ import os
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import menuEdit
+import os
 
 class menuView_Handler(object):
     
@@ -26,8 +27,8 @@ class menuView_Handler(object):
         ui.reportFilePath = "Reports"
         """
         self.ui = ui
-        self.tempConfigFile = configFile # use self.ui.configFile
-        self.tempConfigFile = "temp_config"
+        self.tempConfigFile = os.path.split(ui.tempConfigFile)[1] # use self.ui.configFile
+        self.tempConfigFile =  os.path.split(ui.tempConfigFile)[0]
         self.ReportViewer = menuEdit.menuEdit_Handler(ui, configFile)
     
     def Last_Interview_Report_View_Handler(self): #TODO

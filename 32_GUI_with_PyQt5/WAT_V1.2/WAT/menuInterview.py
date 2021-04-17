@@ -22,14 +22,14 @@ import InterviewHandler
 class menuInterview_Handler(object):
     def __init__(self, ui, configFile="interview.json"):
         self.ui = ui
-        self.configFile = configFile
-        self.configFilePath = "config"
+        self.configFile = os.path.split(ui.configFile)[1]
+        self.configFilePath = os.path.split(ui.configFile)[0]
         self.FreshConfigFile = copy.copy(self.configFile)
         self.FreshConfigFilePath = copy.copy(self.configFilePath)
         self.loadDefaultInterviewConfig()
         self.newInterview = InterviewHandler.InterviewHandler(self.ui)
         
-        self.newInterview.configFile =self.configFile
+        self.newInterview.configFile = self.configFile
         self.newInterview.configFilePath = self.configFilePath
         #self.newInterview.generateInterviewForm()
         
@@ -42,21 +42,21 @@ class menuInterview_Handler(object):
         
     def loadDefaultInterviewConfig(self):
         try:
-            path = os.path.join(self.configFilePath,self.configFile)
+            path = self.ui.configFile
             if self.ui.DEBUG_MODE:
                 print("loading E1: ",path)
             with open(path,"r") as fp:
                 self.config = json.load(fp)
         except Exception:
             if self.ui.DEBUG_MODE:
-                sys.stderr("No such configuration fie \""+self.configFile+"\"")
+                sys.stderr.write("No such configuration fie \""+self.configFile+"\"")
             #sys.exit(1)
             return 0
         return 1
     
     def saveTempInterviewConfig(self):
         try:
-            path = os.path.join("temp_config",os.path.split(self.configFile)[1])
+            path = self.ui.tempConfigFile
             if self.ui.DEBUG_MODE:
                 print("Saving to : ",path)
             with open(path,"w") as fp:
@@ -69,14 +69,14 @@ class menuInterview_Handler(object):
     
     def loadTempInterviewConfig(self):
         try:
-            path = os.path.join("temp_config",self.configFile)
+            path = self.ui.tempConfigFile
             if self.ui.DEBUG_MODE:
                 print("loading T1: ",path)
             with open(path,"r") as fp:
                 self.config = json.load(fp)
         except Exception:
             if self.ui.DEBUG_MODE:
-                sys.stderr("No such configuration fie \""+self.configFile+"\"")
+                sys.stderr.write("No such configuration fie \""+self.ui.tempConfigFile+"\"")
             #sys.exit(1)
             return 0
         return 1
@@ -137,8 +137,8 @@ class menuInterview_Handler(object):
                     sys.stderr.write("Unable to setup interview")
                     sys.stderr.write(str(eSetup))
         else:
-            self.startInterview()
-            
+            self.startInterview(resume=True)
+
     def _showSetupSuccessDialog(self,title, message):
        msg = QtWidgets.QMessageBox()
        msg.setIcon(QtWidgets.QMessageBox.Information)
@@ -159,13 +159,19 @@ class menuInterview_Handler(object):
     
     def startInterview(self,resume=False):
         self.newInterview.closeInterview()
-        self.newInterview = InterviewHandler.InterviewHandler(self.ui)
-        self.newInterview.setInterveiwConfiguration(self.config)
+        if resume:
+            self.loadTempInterviewConfig()
+            self.newInterview = InterviewHandler.InterviewHandler(self.ui)
+            self.newInterview.setInterveiwConfiguration(self.config)
+            self.newInterview.resumed = True
+        else:
+            # self.newInterview.resumed = False
+            # self.loadDefaultInterviewConfig()
+            self.newInterview = InterviewHandler.InterviewHandler(self.ui)
+            # self.newInterview.setInterveiwConfiguration(self.config)
         self.newInterview.newInterviewSubmited = True
         self.newInterview.newInterviewFormShowed = False
         self.newInterview.newInterviewCanceled = False
-        if resume:
-            self.newInterview.resumed = True
         self.newInterview.showInterviewPanel()
     
     def FreshNewInterview(self):
@@ -198,7 +204,7 @@ class menuInterview_Handler(object):
             #if not self.newInterview.newInterviewFormShowed and not self.newInterview.newInterviewSubmited:
             self.newInterview = InterviewHandler.InterviewHandler(self.ui)
             
-            self.newInterview.configFile =self.configFile
+            self.newInterview.configFile = self.configFile
             self.newInterview.configFilePath = self.configFilePath
             self.newInterview.generateInterviewForm()
             

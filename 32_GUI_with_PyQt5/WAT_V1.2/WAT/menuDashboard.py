@@ -13,7 +13,7 @@ import os
 import sys
 from PyQt5 import QtWidgets #,QtCore, QtGui
 import copy
-#from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 
 from ListToIMAGE import ListToIMAGE
 from menuView import  menuView_Handler
@@ -24,12 +24,10 @@ class menuDashboard_Handler(object): #TODO
     def __init__(self, ui, configFile="generatedReport.json", interviewConfigFile="interview.json"):#TODO
         self.ui = ui
         self.configFile = configFile
-        self.refInterviewConfigFile="generatedReport.json"
-        self.configFilePath = "temp_config"
-        self.refInterviewConfigFilePath = "config"
-        self.tempConfigFile = copy.copy(self.configFile)
-        self.tempConfigFilePath = "temp_config"
-        self.interviewConfigFile = interviewConfigFile
+        self.refInterviewConfigFile= ui.configFile
+        self.tempReportConfigFile = ui.tempReportConfigFile
+        self.refReportConfigFile = ui.reportConfigFile
+        self.interviewConfigFile = ui.tempConfigFile
         self.imageFileToSave = "WAT_Default.png"
         self.imageFileLocation = "reports"
         
@@ -74,7 +72,7 @@ class menuDashboard_Handler(object): #TODO
         if self.loadInterviewReport(ref=False): #previous was True
             pass
         else:
-            self._showMessageDialog("Failed", "Unable to load report file: "+self.tempConfigFile)
+            self._showMessageDialog("Failed", "Unable to load report file: "+self.tempReportConfigFile)
             return 0
         
         self.reportConfig["NAME_OF_RESPONDER"] = self.config["NAME_OF_RESPONDER"]
@@ -193,6 +191,20 @@ class menuDashboard_Handler(object): #TODO
             spaces = symbol*(Length-len(word))
         return word+spaces
 
+    def _sortRows(self, ListArray):
+        tempArray = []
+        for rowIndex1, row1 in enumerate(ListArray):
+            for rowIndex2, row2 in enumerate(ListArray):
+                try:
+                    if int(ListArray[rowIndex1][-3]) > int(ListArray[rowIndex2][-3]):
+                        tempArray = copy.deepcopy(ListArray[rowIndex1])
+                        ListArray[rowIndex1] = copy.deepcopy(ListArray[rowIndex2])
+                        ListArray[rowIndex2] = copy.deepcopy(tempArray)
+                except Exception as eStr:
+                    pass
+        print(ListArray)
+        return ListArray
+
     def Export_Report_To_Png_Handler(self):
         if self.ui.DEBUG_MODE:
             print(" Export Generated Report To png Handler callback")
@@ -204,31 +216,63 @@ class menuDashboard_Handler(object): #TODO
             return
         
         self.loadInterviewReport()
-        try:
-            if self.reportConfig["IS_READY_TO_GENERATE_GRAPH"]:
-                Obj = ListToIMAGE()
-                ABS_Path = os.path.join(self.imageFileLocation,self.imageFileToSave)
-                Obj.setImageFileName(ABS_Path)
-                L = []
-                Cols = list(self.reportConfig["SCORES"].keys())
-                dummyCols = copy.deepcopy(Cols)
-                # dummyCols[6] = "COM"
-                # dummyCols[7] = "PL"
-                # dummyCols[8] = "E"
-                # dummyCols[9] = "X"
-                # dummyCols[10] = "IND"
-                # dummyCols[11] = "IC"
-                # dummyCols[12] = "AT"
-                # dummyCols[13] = "O"
-                # dummyCols[14] = "R"
-                # dummyCols[15] = "S"
-                Pad = []
-                for i in range(len(Cols)):
-                    Pad.append("_"*len(Cols[i]))
-                Obj.setColumLabels([Pad,dummyCols,Pad])
-                Obj.setAlignment("CENTER")
-                for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
-                    tempRow = []
+        # try:
+        if self.reportConfig["IS_READY_TO_GENERATE_GRAPH"]:
+            Obj = ListToIMAGE(fontFilePath=self.ui.fontFilesPath)
+            # Obj.setFontFilePath(self.ui.fontFilesPath)
+            ABS_Path = os.path.join(self.imageFileLocation,self.imageFileToSave)
+            Obj.setImageFileName(ABS_Path)
+            Obj.numberOfLinesPerPage = 40
+            L = []
+            Cols = list(self.reportConfig["SCORES"].keys())
+            dummyCols = copy.deepcopy(Cols)
+            # dummyCols[6] = "COM"
+            # dummyCols[7] = "PL"
+            # dummyCols[8] = "E"
+            # dummyCols[9] = "X"
+            # dummyCols[10] = "IND"
+            # dummyCols[11] = "IC"
+            # dummyCols[12] = "AT"
+            # dummyCols[13] = "O"
+            # dummyCols[14] = "R"
+            # dummyCols[15] = "S"
+            Pad = []
+            for i in range(len(Cols)):
+                Pad.append("_"*len(Cols[i]))
+            Obj.setColumLabels([Pad,dummyCols,Pad])
+            Obj.setAlignment("CENTER")
+            for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                tempRow = []
+                for colIndex,col in enumerate(Cols):
+                    if col=="R_WORDS":
+                        tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
+                    elif col=="R_P_WORDS":
+                        tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
+                    else:
+                        tempRow.append(self.reportConfig["SCORES"][col][row])
+                    if len(Pad[colIndex]) < len(str(tempRow[-1])):
+                        Pad[colIndex] = self._doPadding(Pad[colIndex],len(str(tempRow[-1])),"_")
+                L.append(tempRow)
+                L.append(Pad)
+            if self.ui.DEBUG_MODE:
+                print("Build End1")
+            Obj.setFontSize(50)
+            Obj.generateImage(L)
+            if self.ui.DEBUG_MODE:
+                print("Saving End1")
+
+            Obj = ListToIMAGE(fontFilePath=self.ui.fontFilesPath)
+            Obj.setImageFileName(ABS_Path[:-4]+str("R2")+ABS_Path[-4:])
+            L = []
+            Pad = []
+            for i in range(len(Cols)):
+                Pad.append("_" * len(Cols[i]))
+            Labels = ["","","","","Words","With","2","","","","","or","","","","","more","points",""]
+            Obj.setColumLabels([Pad,Labels,Pad,dummyCols,Pad])
+            Obj.setAlignment("CENTER")
+            for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                tempRow = []
+                if int(self.reportConfig["SCORES"]["TOTAL"][row]) >= 2:
                     for colIndex,col in enumerate(Cols):
                         if col=="R_WORDS":
                             tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
@@ -237,138 +281,110 @@ class menuDashboard_Handler(object): #TODO
                         else:
                             tempRow.append(self.reportConfig["SCORES"][col][row])
                         if len(Pad[colIndex]) < len(str(tempRow[-1])):
-                            Pad[colIndex] = self._doPadding(Pad[colIndex],len(str(tempRow[-1])),"_")
+                            Pad[colIndex] = self._doPadding(Pad[colIndex], len(str(tempRow[-1])), "_")
                     L.append(tempRow)
                     L.append(Pad)
-                if self.ui.DEBUG_MODE:
-                    print("Build End1")
-                Obj.setFontSize(50)
-                Obj.generateImage(L)
-                if self.ui.DEBUG_MODE:
-                    print("Saving End1")
-
-                Obj = ListToIMAGE()
-                Obj.setImageFileName(ABS_Path[:-4]+str("R2")+ABS_Path[-4:])
-                L = []
-                Pad = []
-                for i in range(len(Cols)):
-                    Pad.append("_" * len(Cols[i]))
-                Labels = ["","","","","Words","With","2","","","","","or","","","","","more","points",""]
-                Obj.setColumLabels([Pad,Labels,Pad,dummyCols,Pad])
-                Obj.setAlignment("CENTER")
-                for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
-                    tempRow = []
-                    if int(self.reportConfig["SCORES"]["TOTAL"][row]) >= 2:
-                        for colIndex,col in enumerate(Cols):
-                            if col=="R_WORDS":
-                                tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
-                            elif col=="R_P_WORDS":
-                                tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
-                            else:
-                                tempRow.append(self.reportConfig["SCORES"][col][row])
-                            if len(Pad[colIndex]) < len(str(tempRow[-1])):
-                                Pad[colIndex] = self._doPadding(Pad[colIndex], len(str(tempRow[-1])), "_")
-                        L.append(tempRow)
-                        L.append(Pad)
-
-                if self.ui.DEBUG_MODE:
-                    print("Build End2")
-                Obj.setFontSize(50)
-                Obj.generateImage(L)
 
 
-                Obj = ListToIMAGE()
-                Obj.setImageFileName(ABS_Path[:-4]+str("Stereos")+ABS_Path[-4:])
-                L = []
-                Pad = []
-                for i in range(len(Cols)):
-                    Pad.append("_" * len(Cols[i]))
-                Labels = ["","","Words","With","stereo","types","","","","","","in","","","","","any","round",""]
-                Obj.setColumLabels([Pad,Labels,Pad,dummyCols,Pad])
-                Obj.setAlignment("CENTER")
-                for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
-                    tempRow = []
-                    l1 = "S" in self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["5"][row]
-                    l2 = "S" in self.reportConfig["ROUND2"]["COMPLEX_INDICATOR_TYPES"]["5"][row]
-                    if l1 or l2:
-                        for colIndex,col in enumerate(Cols):
-                            if col=="R_WORDS":
-                                tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
-                            elif col=="R_P_WORDS":
-                                tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
-                            else:
-                                tempRow.append(self.reportConfig["SCORES"][col][row])
-                            if len(Pad[colIndex]) < len(str(tempRow[-1])):
-                                Pad[colIndex] = self._doPadding(Pad[colIndex], len(str(tempRow[-1])), "_")
-                        L.append(tempRow)
-                        L.append(Pad)
-
-                if self.ui.DEBUG_MODE:
-                    print("Build End3")
-                Obj.setFontSize(50)
-                Obj.generateImage(L)
-
-                # Height_ROUND1 = self.reportConfig["ROUND1"]["REACTION_TIME"]
-                # Height_ROUND2 = self.reportConfig["ROUND2"]["REACTION_TIME"]
-                # Domain_S_WORDS = self.reportConfig["SCORES"]["S_WORDS"]
-                # Domain_RESPONSE = self.reportConfig["ROUND1"]["REACTION"]
-                # Domain_REPRODUCTION = self.reportConfig["ROUND2"]["REACTION"]
-                # Domain_X1 = []
-                # Domain_X2 = []
-                # Colors1 = ["green"]*len(Height_ROUND1)
-                # Colors2 = ["green"]*len(Height_ROUND2)
-                #
-                # for i in range(len(Domain_S_WORDS)):
-                #     Domain_X1.append(Domain_S_WORDS[i]+"\n"+Domain_RESPONSE[i])
-                #     if Height_ROUND1[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
-                #         Colors1[i] = "red"
-                # for i in range(len(Domain_S_WORDS)):
-                #     Domain_X2.append(Domain_S_WORDS[i]+"\nRP:"+Domain_REPRODUCTION[i])
-                #     if Height_ROUND2[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
-                #         Colors2[i] = "red"
-                #
-                # y = [self.reportConfig["ROUND1"]["MEDIAN_PRT"]]*len(Domain_S_WORDS)
-                # fig, ax1 = plt.subplots()
-                # ax1.bar(Domain_S_WORDS, Height_ROUND1, color=Colors1)
-                # plt.xticks(rotation=90)
-                # plt.yticks(rotation=90)
-                # ax2 = ax1.twiny()
-                # ax2.bar(Domain_RESPONSE, Height_ROUND1, color=Colors1)
-                # plt.xticks(rotation=90)
-                # plt.yticks(rotation=90)
-                # ax1.plot(range(len(Domain_S_WORDS)),y)
-                # ax2.plot(range(len(Domain_S_WORDS)),y)
-                # ax1.set_ylabel("Time in Seconds")
-                # plt.savefig(ABS_Path[:-4]+"Graph_Round1"+ABS_Path[-4:])
-                #
-                # #plt.clear()
-                # if self.ui.DEBUG_MODE:
-                #     print("Plot1 End")
-                # fig, Ax1 = plt.subplots()
-                # print(len(Domain_S_WORDS))
-                # Ax1.bar(Domain_S_WORDS, Height_ROUND2, color=Colors2)
-                # plt.xticks(rotation=90)
-                # plt.yticks(rotation=90)
-                # Ax2 = Ax1.twiny()
-                # print(len(Domain_REPRODUCTION))
-                # print(len(Height_ROUND2))
-                # Ax2.bar(Domain_REPRODUCTION,Height_ROUND2, color=Colors2)
-                # plt.xticks(rotation=90)
-                # plt.yticks(rotation=90)
-                # Ax1.plot(range(len(Domain_S_WORDS)),y)
-                # Ax2.plot(range(len(Domain_S_WORDS)),y)
-                # Ax1.set_ylabel("Time in Seconds")
-                # plt.savefig(ABS_Path[:-4]+"Graph_Round2"+ABS_Path[-4:])
-                # if self.ui.DEBUG_MODE:
-                #     print("Plot2 End")
-
-                self._showMessageDialog(" Exported Successfully","Exported to png successfully")
-            else:
-                self._showMessageDialog(" Export Halt", "Generate Report First")
-        except Exception as eExportPng:
+            Obj.setFontSize(50)
+            L = self._sortRows(L)
+            Obj.generateImage(L)
             if self.ui.DEBUG_MODE:
-                assert("unable to Export " + str(eExportPng))
-            self._showMessageDialog(" Denied ", "Failed to Export"+str(eExportPng))
+                print("Build End2")
+
+            Obj = ListToIMAGE(fontFilePath=self.ui.fontFilesPath)
+            Obj.setImageFileName(ABS_Path[:-4]+str("Stereos")+ABS_Path[-4:])
+            L = []
+            Pad = []
+            for i in range(len(Cols)):
+                Pad.append("_" * len(Cols[i]))
+            Labels = ["","","Words","With","stereo","types","","","","","","in","","","","","any","round",""]
+            Obj.setColumLabels([Pad,Labels,Pad,dummyCols,Pad])
+            Obj.setAlignment("CENTER")
+            for row in range(self.reportConfig["NUMBER_OF_WORDS_IN_TEST"]):
+                tempRow = []
+                l1 = "S" in self.reportConfig["ROUND1"]["COMPLEX_INDICATOR_TYPES"]["5"][row]
+                l2 = "S" in self.reportConfig["ROUND2"]["COMPLEX_INDICATOR_TYPES"]["5"][row]
+                if l1 or l2:
+                    for colIndex,col in enumerate(Cols):
+                        if col=="R_WORDS":
+                            tempRow.append(self.reportConfig["ROUND1"]["REACTION"][row])
+                        elif col=="R_P_WORDS":
+                            tempRow.append(self.reportConfig["ROUND2"]["REACTION"][row])
+                        else:
+                            tempRow.append(self.reportConfig["SCORES"][col][row])
+                        if len(Pad[colIndex]) < len(str(tempRow[-1])):
+                            Pad[colIndex] = self._doPadding(Pad[colIndex], len(str(tempRow[-1])), "_")
+                    L.append(tempRow)
+                    L.append(Pad)
+
+            if self.ui.DEBUG_MODE:
+                print("Build End3")
+            Obj.setFontSize(50)
+            L = self._sortRows(L)
+            Obj.generateImage(L)
+
+            # Height_ROUND1 = self.reportConfig["ROUND1"]["REACTION_TIME"]
+            # Height_ROUND2 = self.reportConfig["ROUND2"]["REACTION_TIME"]
+            # Domain_S_WORDS = self.reportConfig["SCORES"]["S_WORDS"]
+            # Domain_RESPONSE = self.reportConfig["ROUND1"]["REACTION"]
+            # Domain_REPRODUCTION = self.reportConfig["ROUND2"]["REACTION"]
+            # Domain_X1 = []
+            # Domain_X2 = []
+            # Colors1 = ["green"]*len(Height_ROUND1)
+            # Colors2 = ["green"]*len(Height_ROUND2)
+            #
+            # for i in range(len(Domain_S_WORDS)):
+            #     Domain_X1.append(Domain_S_WORDS[i]+"\n"+Domain_RESPONSE[i])
+            #     if Height_ROUND1[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
+            #         Colors1[i] = "red"
+            # for i in range(len(Domain_S_WORDS)):
+            #     Domain_X2.append(Domain_S_WORDS[i]+"\nRP:"+Domain_REPRODUCTION[i])
+            #     if Height_ROUND2[i] >= self.reportConfig["ROUND1"]["MEDIAN_PRT"]:
+            #         Colors2[i] = "red"
+            #
+            # y = [self.reportConfig["ROUND1"]["MEDIAN_PRT"]]*len(Domain_S_WORDS)
+            # fig, ax1 = plt.subplots()
+            # ax1.bar(Domain_S_WORDS, Height_ROUND1, color=Colors1)
+            # plt.xticks(rotation=90)
+            # plt.yticks(rotation=90)
+            # ax2 = ax1.twiny()
+            # ax2.bar(Domain_RESPONSE, Height_ROUND1, color=Colors1)
+            # plt.xticks(rotation=90)
+            # plt.yticks(rotation=90)
+            # ax1.plot(range(len(Domain_S_WORDS)),y)
+            # ax2.plot(range(len(Domain_S_WORDS)),y)
+            # ax1.set_ylabel("Time in Seconds")
+            # plt.savefig(ABS_Path[:-4]+"Graph_Round1"+ABS_Path[-4:])
+            #
+            # #plt.clear()
+            # if self.ui.DEBUG_MODE:
+            #     print("Plot1 End")
+            # fig, Ax1 = plt.subplots()
+            # print(len(Domain_S_WORDS))
+            # Ax1.bar(Domain_S_WORDS, Height_ROUND2, color=Colors2)
+            # plt.xticks(rotation=90)
+            # plt.yticks(rotation=90)
+            # Ax2 = Ax1.twiny()
+            # print(len(Domain_REPRODUCTION))
+            # print(len(Height_ROUND2))
+            # Ax2.bar(Domain_REPRODUCTION,Height_ROUND2, color=Colors2)
+            # plt.xticks(rotation=90)
+            # plt.yticks(rotation=90)
+            # Ax1.plot(range(len(Domain_S_WORDS)),y)
+            # Ax2.plot(range(len(Domain_S_WORDS)),y)
+            # Ax1.set_ylabel("Time in Seconds")
+            # plt.savefig(ABS_Path[:-4]+"Graph_Round2"+ABS_Path[-4:])
+            # if self.ui.DEBUG_MODE:
+            #     print("Plot2 End")
+
+            self._showMessageDialog(" Exported Successfully","Exported to png successfully")
+        else:
+            self._showMessageDialog(" Export Halt", "Generate Report First")
+        # except Exception as eExportPng:
+        #     if self.ui.DEBUG_MODE:
+        #         assert("unable to Export " + str(eExportPng))
+        #     self._showMessageDialog(" Denied ", "Failed to Export"+str(eExportPng))
     
     def _calculateMedian(self,values):
         SortedValues = sorted(values)
@@ -389,11 +405,11 @@ class menuDashboard_Handler(object): #TODO
     def loadInterviewReport(self, ref=False):
         try:
             if ref:
-                ABS_PATH = os.path.join(self.refInterviewConfigFilePath,self.refInterviewConfigFile)
+                ABS_PATH = self.refReportConfigFile
                 if self.ui.DEBUG_MODE:
                     print("Loading ref report")
             else:
-                ABS_PATH = os.path.join(self.tempConfigFilePath,self.tempConfigFile)
+                ABS_PATH = self.tempReportConfigFile
                 if self.ui.DEBUG_MODE:
                     print("Loading temp report")
             if self.ui.DEBUG_MODE:
@@ -412,7 +428,7 @@ class menuDashboard_Handler(object): #TODO
     def loadInterviewConfiguration(self):
         try:
             
-            ABS_PATH = os.path.join(self.tempConfigFilePath,self.interviewConfigFile)
+            ABS_PATH = self.interviewConfigFile
             if self.ui.DEBUG_MODE:
                 print("Loading D5: ",ABS_PATH)
             with open(ABS_PATH,"r") as fp:
@@ -442,7 +458,7 @@ class menuDashboard_Handler(object): #TODO
     
     def _saveInterviewReport(self):
         try:
-            ABS_PATH = os.path.join(self.tempConfigFilePath,self.tempConfigFile)
+            ABS_PATH = self.tempReportConfigFile
             if self.ui.DEBUG_MODE:
                 print("Saving D8: ",ABS_PATH)
             with open(ABS_PATH, "w") as fp:

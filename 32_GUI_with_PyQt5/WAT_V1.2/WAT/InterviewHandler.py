@@ -12,6 +12,7 @@ from PyQt5 import QtWidgets
 import sys, json
 import time
 from threading import Thread
+import copy
 import os
 
 import complexIndicatorHandler
@@ -22,12 +23,10 @@ import Interview
 class InterviewHandler(object):
 
     def __init__(self, ui, configFile="interview.json"):
-        self.configFile = configFile
-        self.configFilePath = "temp_config"
+        self.configFile = ui.configFile
         self.ui = ui
         self.loadInterviewConfiguration()
-        self.wordsFile = self.config["INTERVIEW_WORDS_JSON_FILE"]
-        self.wordsFileLocation = self.config["INTERVIEW_WORDS_JSON_FILE_LOCATION"]
+        self.wordsFile = ui.wordsListFile
         self._currentWordSerial = self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["CURRENT_TEST_SERIAL"]
         self.loadInterviewWords()
         self.interviewOperationStateValue = 0
@@ -52,6 +51,7 @@ class InterviewHandler(object):
         self.InterviewForm = QtWidgets.QWidget(self.ui.centralwidget)
         #ComplexIndicatorView = QtWidgets.QWidget()         
         self.I_FORM = Interview.Ui_Form()
+        self.I_FORM.complexIndicatorsConfigFile = self.ui.complexIndicatorsConfigFile
         self.I_FORM.setupUi(self.InterviewForm)
         self.ui.mainCanvas = self.InterviewForm
         self.ui.lastActiveWidget = self.InterviewForm
@@ -63,7 +63,7 @@ class InterviewHandler(object):
     
     def loadInterviewWords(self):
         try:
-            ABS_PATH = os.path.join(self.wordsFileLocation,self.wordsFile)
+            ABS_PATH = self.wordsFile
             if self.ui.DEBUG_MODE:
                 print("Loading E5: ",ABS_PATH)
             with open(ABS_PATH,"r") as fp:
@@ -76,22 +76,19 @@ class InterviewHandler(object):
     
     def loadInterviewConfiguration(self):
         try:
-            path = os.path.join(self.configFilePath,self.configFile)
+            path = self.ui.tempConfigFile
             if self.ui.DEBUG_MODE:
                 print("Loading E2: ",path)
             with open(path, "r") as fp:
                 self.config = json.load(fp)
-                self.wordsFile = self.config["INTERVIEW_WORDS_JSON_FILE"]
-                self.wordsFileLocation = self.config["INTERVIEW_WORDS_JSON_FILE_LOCATION"]
         except Exception as eOpen:
             if self.ui.DEBUG_MODE:
                 sys.stderr.write(self.configFile+" No such config file or directory \n")
                 sys.stderr.write(str(eOpen))
             sys.exit(2)
-    
-    #@staticmethod
+
     def setInterveiwConfiguration(self,config):
-        self.config = config
+        self.config = copy.deepcopy(config)
         #self.saveInterviewConfiguration()
     
     def getInterviewConfiguration(self):
@@ -99,7 +96,7 @@ class InterviewHandler(object):
     
     def saveInterviewConfiguration(self):
         try:
-            path = os.path.join(self.configFilePath,os.path.split(self.configFile)[1])
+            path = self.ui.tempConfigFile
             if self.ui.DEBUG_MODE:
                 print("Saving to : ",path)
             with open(path,"w") as fp:
@@ -139,15 +136,18 @@ class InterviewHandler(object):
         if self.resumed:
             self.I_FORM.wordSerialNumberLabel.setText("")
             self.I_FORM.testWordLabel.setText("")
-            if self.config["ROUND1_RESPONSES"]["COMPLETED"]:
-                self.I_FORM.interviewOperationalButton.setText("Start/Resume 2nd Round")
-            else:
-                self.I_FORM.interviewOperationalButton.setText("Start/Resume 1st Round")
             self.CI_FORM.hideComplexIndicatorInput()
-            self.I_FORM.timerLabel.hide()#setText("")
+            self.I_FORM.timerLabel.hide()  # setText("")
             self.I_FORM.timeTakenLabel.setText("")
             self.I_FORM.responseWrodLabel.setText("")
             self.I_FORM.lastResponseWord.setText("")
+            if self.config["ROUND1_RESPONSES"]["COMPLETED"]:
+                self.I_FORM.interviewOperationalButton.setText("Start/Resume 2nd Round")
+                self.I_FORM.testRoundLabel.setText("Second Pass")
+            else:
+                self.I_FORM.interviewOperationalButton.setText("Start/Resume 1st Round")
+                self.I_FORM.testRoundLabel.setText("First Pass")
+            print("resumed")
             self.interviewOperationStateValue = 2
             return 1
         else:
@@ -158,6 +158,7 @@ class InterviewHandler(object):
             else:
                 if self.ui.DEBUG_MODE:
                     sys.stderr.write("Invalid round")
+                return 0
                 sys.exit(6)
         if self._currentWordSerial > self.config["NUMBER_OF_WORDS_IN_TEST"]:
             print("Interview Ended")
@@ -214,11 +215,12 @@ class InterviewHandler(object):
             if self.config["ROUND"+str(self.config["CURRENT_ROUND"])+"_RESPONSES"]["COMPLETED"]:
                 if self.config["CURRENT_ROUND"]==2:
                     pass
+                    # TODO add popup message
                 else:
                     if self.showNextWord():
                         pass
                     else: 
-                        #TODO add popup message
+                        # TODO add popup message
                         self.closeInterview()
             else:
                 if self.showNextWord():

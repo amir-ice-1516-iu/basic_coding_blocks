@@ -20,8 +20,8 @@ class menuSetup_Handler(object):
     
     def __init__(self, ui, configFile="interview.json"):
         self.ui = ui
-        self.configFile = configFile
-        self.configFilePath = "config"
+        self.configFile = os.path.split(ui.configFile)[1]
+        self.configFilePath = os.path.split(ui.configFile)[0]
         #self.loadInterviewConfiguration()
         self.menu_interview_handler = menuInterview.menuInterview_Handler(ui, configFile)
         self.menu_interview_handler.INTERVIEW_SETUP_MODE = True

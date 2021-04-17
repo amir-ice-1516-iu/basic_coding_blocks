@@ -23,20 +23,18 @@ class menuEdit_Handler(object):
         self.ui = ui
         self.EDIT_MODE = True
         self.SEARCH_MODE = False
-        self.tempConfigFile = configFile
-        self.tempConfigFilePath = "temp_config"
+        self.tempConfigFile = ui.tempConfigFile
         self.ReportGeneratorObj = None
         #self.loadInterviewConfiguration()
             
     def loadInterviewConfiguration(self):
         try:
-            path = os.path.join(self.tempConfigFilePath,self.tempConfigFile)
+            path = self.tempConfigFile
             if self.ui.DEBUG_MODE:
                 print("Loading E8: ",path)
             with open(path, "r") as fp:
                 self.config = json.load(fp)
-                self.wordsFile = self.config["INTERVIEW_WORDS_JSON_FILE"]
-                self.wordsFileLocation = self.config["INTERVIEW_WORDS_JSON_FILE_LOCATION"]
+                self.wordsFile = self.ui.wordsListFile
             return 1
         except Exception as eOpen:
             sys.stderr.write(self.tempConfigFile+" No such config file or directory")
@@ -46,7 +44,7 @@ class menuEdit_Handler(object):
         
     def loadInterviewWords(self):
         try:
-            ABS_PATH = os.path.join(self.wordsFileLocation,self.wordsFile)
+            ABS_PATH = self.wordsFile
             if self.ui.DEBUG_MODE:
                 print("Loading ED5: ",ABS_PATH)
             with open(ABS_PATH,"r") as fp:
@@ -62,7 +60,7 @@ class menuEdit_Handler(object):
         try:
             if self.ui.DEBUG_MODE:
                 print("Saving Predefined Words to : ",self.wordsFile)
-            ABS_PATH = os.path.join(self.wordsFileLocation,self.wordsFile)
+            ABS_PATH = self.wordsFile
             with open(ABS_PATH, "w") as fp:
                 json.dump(self.interview_words, fp, indent=4)
             return 1
@@ -74,7 +72,7 @@ class menuEdit_Handler(object):
             
     def saveUpdatedReport(self):
         try:
-            path = os.path.join(self.tempConfigFilePath,self.tempConfigFile)
+            path = self.tempConfigFile
             if self.ui.DEBUG_MODE:
                 print("Saving Updated Report")
             with open(path, "w") as fp:
@@ -130,9 +128,8 @@ class menuEdit_Handler(object):
                     print("Unable to clear window central widget")
                 sys.stderr.write(str(eClear))
                 sys.exit(13)
-            self.wordsFile = self.config["INTERVIEW_WORDS_JSON_FILE"]
+            self.wordsFile = self.ui.wordsListFile
             self.PWFormWidget = QtWidgets.QWidget(self.ui.centralwidget)
-            #ComplexIndicatorView = QtWidgets.QWidget()         
             self.PWS_FORM = PredefinedWords.Ui_Form()
             self.PWS_FORM.setupUi(self.PWFormWidget)
             self.ui.mainCanvas = self.PWFormWidget
